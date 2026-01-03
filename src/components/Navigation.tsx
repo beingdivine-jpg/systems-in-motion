@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Work", href: "#work" },
-  { label: "Operations", href: "#work" },
+  { label: "Enterprise", href: "#enterprise" },
+  { label: "Startups", href: "#startups" },
   { label: "Visual", href: "#visual" },
   { label: "Contact", href: "#contact" },
 ];
@@ -25,7 +25,7 @@ export function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border"
+            ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/10"
             : "py-6 bg-transparent"
         }`}
       >
@@ -44,7 +44,7 @@ export function Navigation() {
               <a
                 key={item.label}
                 href={item.href}
-                className="font-mono text-sm text-muted-foreground hover:text-foreground link-underline transition-colors"
+                className="font-mono text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
               </a>
@@ -74,15 +74,12 @@ export function Navigation() {
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8">
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className="font-display text-3xl font-bold text-foreground hover:text-accent-enterprise transition-colors"
-              style={{
-                animationDelay: `${index * 0.1}s`,
-              }}
             >
               {item.label}
             </a>
