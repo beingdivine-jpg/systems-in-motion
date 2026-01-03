@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const navItems = [
-  { label: "Philosophy", href: "#how-i-work" },
+  { label: "About", href: "#how-i-work" },
   { label: "Enterprise", href: "#enterprise" },
-  { label: "Operations", href: "#operations" },
+  { label: "Innovation", href: "#innovation" },
   { label: "Visual", href: "#visual" },
 ];
 

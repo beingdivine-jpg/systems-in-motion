@@ -24,7 +24,7 @@ const education = [
 export function HowIWorkSection() {
   return (
     <section id="how-i-work" className="py-28 lg:py-36 px-6 lg:px-12">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Section intro */}
         <div className="flex items-center gap-4 mb-16">
           <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
