@@ -2,7 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { HowIWorkSection } from "@/components/HowIWorkSection";
 import { EnterpriseSection } from "@/components/EnterpriseSection";
-import { OperationsSection } from "@/components/OperationsSection";
+import { InnovationSection } from "@/components/InnovationSection";
 import { VisualSection } from "@/components/VisualSection";
 import { TimelineSection } from "@/components/TimelineSection";
 import { Footer } from "@/components/Footer";
@@ -30,7 +30,7 @@ const Index = () => {
 
         <EnterpriseSection />
 
-        <OperationsSection />
+        <InnovationSection />
 
         {/* Section divider */}
         <div className="section-divider" />
