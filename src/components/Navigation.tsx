@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "How I Work", href: "#how-i-work" },
   { label: "Enterprise", href: "#enterprise" },
-  { label: "Startups", href: "#startups" },
+  { label: "Operations", href: "#operations" },
   { label: "Visual", href: "#visual" },
   { label: "Contact", href: "#contact" },
 ];
@@ -25,17 +26,17 @@ export function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/10"
+            ? "py-4 bg-background/90 backdrop-blur-md border-b border-border/50"
             : "py-6 bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-6 lg:px-12 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#"
-            className="font-display text-xl font-bold tracking-tight hover:text-muted-foreground transition-colors"
+            className="font-serif text-xl tracking-tight hover:text-muted-foreground transition-colors"
           >
-            DJ<span className="text-accent-enterprise">.</span>
+            DJ
           </a>
 
           {/* Desktop nav */}
@@ -44,7 +45,7 @@ export function Navigation() {
               <a
                 key={item.label}
                 href={item.href}
-                className="font-mono text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="font-sans text-sm text-muted-foreground hover:text-foreground transition-colors editorial-underline"
               >
                 {item.label}
               </a>
@@ -54,23 +55,18 @@ export function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden w-10 h-10 rounded-lg bg-muted/30 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+            className="md:hidden w-10 h-10 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </nav>
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transition-all duration-500 md:hidden ${
-          isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 bg-background/98 backdrop-blur-sm transition-all duration-500 md:hidden ${
+          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8">
@@ -79,7 +75,7 @@ export function Navigation() {
               key={item.label}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="font-display text-3xl font-bold text-foreground hover:text-accent-enterprise transition-colors"
+              className="font-serif text-2xl text-foreground hover:text-muted-foreground transition-colors"
             >
               {item.label}
             </a>
