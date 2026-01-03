@@ -30,6 +30,9 @@ const Index = () => {
 
         <EnterpriseSection />
 
+        {/* Section divider */}
+        <div className="section-divider" />
+
         <InnovationSection />
 
         {/* Section divider */}
