@@ -41,6 +41,7 @@ export default {
           enterprise: "hsl(var(--accent-enterprise))",
           operations: "hsl(var(--accent-operations))",
           visual: "hsl(var(--accent-visual))",
+          warm: "hsl(var(--accent-warm))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
