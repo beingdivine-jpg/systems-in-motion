@@ -54,17 +54,22 @@ export function HowIWorkSection() {
           </div>
         </div>
 
-        {/* Context card */}
-        <div className="relative pl-6 border-l-2 border-foreground/10 mb-24">
-          <p className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed">
-            At 24, I've worked at <span className="text-foreground">Ferrero's Luxembourg headquarters</span>, 
-            coordinated broadcasting for the <span className="text-foreground">Paris 2024 Olympics</span>, 
-            co-founded an esports organization that reached <span className="text-foreground">Asia's top rankings</span>, 
-            and competed in <span className="text-foreground">European hackathons</span>. 
-          </p>
-          <p className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed mt-4">
-            Each environment required adapting quickly and thinking across disciplines.
-          </p>
+        {/* About Me */}
+        <div className="mb-24">
+          <h3 className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase mb-6">
+            About Me
+          </h3>
+          <div className="relative pl-6 border-l-2 border-foreground/10">
+            <p className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed">
+              At 24, I've worked at <span className="text-foreground">Ferrero's Luxembourg headquarters</span>, 
+              coordinated broadcasting for the <span className="text-foreground">Paris 2024 Olympics</span>, 
+              co-founded an esports organization that reached <span className="text-foreground">Asia's top rankings</span>, 
+              and competed in <span className="text-foreground">European hackathons</span>. 
+            </p>
+            <p className="font-sans text-base md:text-lg text-muted-foreground leading-relaxed mt-4">
+              Each environment required adapting quickly and thinking across disciplines.
+            </p>
+          </div>
         </div>
 
         {/* Education */}
