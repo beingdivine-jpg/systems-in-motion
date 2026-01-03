@@ -1,4 +1,4 @@
-import { ArrowDown, Download, Camera } from "lucide-react";
+import { ArrowDown, Download, Camera, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
@@ -7,79 +7,102 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12">
-      <div className="max-w-4xl mx-auto stagger-children">
-        {/* Name - editorial style */}
-        <div className="mb-16">
-          <p className="font-mono text-sm tracking-widest text-muted-foreground uppercase mb-4">
-            Portfolio
-          </p>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-[0.9]">
-            Divin
-            <br />
-            <span className="italic text-muted-foreground">Joseph</span>
-          </h1>
-        </div>
+    <section className="relative min-h-screen flex flex-col justify-between px-6 lg:px-12 pt-32 pb-8">
+      {/* Main content - pushed up slightly for better balance */}
+      <div className="flex-1 flex flex-col justify-center max-w-5xl mx-auto w-full">
+        <div className="stagger-children">
+          {/* Overline */}
+          <div className="mb-6">
+            <span className="inline-flex items-center gap-2">
+              <span className="w-8 h-px bg-foreground/30" />
+              <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
+                Portfolio 2025
+              </span>
+            </span>
+          </div>
 
-        {/* THE quote - preserved exactly as requested */}
-        <div className="relative max-w-3xl mb-16">
-          <div className="absolute -left-4 md:-left-8 top-0 bottom-0 w-px bg-foreground/20" />
-          <blockquote className="pl-6 md:pl-10">
-            <p className="font-serif text-2xl md:text-3xl lg:text-4xl font-normal leading-relaxed text-foreground">
-              I don't focus on mastering a single discipline.
-            </p>
-            <p className="font-serif text-2xl md:text-3xl lg:text-4xl font-normal leading-relaxed text-muted-foreground mt-4">
-              I work across systems where{" "}
-              <span className="text-accent-enterprise">strategy</span>,{" "}
-              <span className="text-accent-operations">technology</span>, and{" "}
-              <span className="text-accent-visual">creativity</span>{" "}
-              reinforce each other to create{" "}
-              <span className="text-foreground italic">impact</span>.
-            </p>
-          </blockquote>
-        </div>
+          {/* Name - larger, more impactful */}
+          <div className="mb-12 md:mb-16">
+            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-medium tracking-tight leading-[0.85]">
+              <span className="block">Divin</span>
+              <span className="block italic text-muted-foreground/70">Joseph</span>
+            </h1>
+          </div>
 
-        {/* Subtitle */}
-        <p className="font-sans text-base md:text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed">
-          Enterprise IT · Global Events · Innovation · Visual Storytelling
-        </p>
+          {/* Quote - more prominent with better spacing */}
+          <div className="relative max-w-3xl mb-12 md:mb-16">
+            <div className="absolute -left-4 md:-left-6 top-2 bottom-2 w-[2px] bg-gradient-to-b from-foreground/40 via-foreground/20 to-transparent" />
+            <blockquote className="pl-6 md:pl-8">
+              <p className="font-serif text-xl md:text-2xl lg:text-3xl font-normal leading-[1.4] text-foreground/90">
+                I don't focus on mastering a single discipline.
+              </p>
+              <p className="font-serif text-xl md:text-2xl lg:text-3xl font-normal leading-[1.4] text-muted-foreground mt-3">
+                I work across systems where{" "}
+                <span className="text-accent-enterprise font-medium">strategy</span>,{" "}
+                <span className="text-accent-operations font-medium">technology</span>, and{" "}
+                <span className="text-accent-visual font-medium">creativity</span>{" "}
+                reinforce each other to create{" "}
+                <em className="text-foreground not-italic font-medium">impact</em>.
+              </p>
+            </blockquote>
+          </div>
 
-        {/* CTAs - minimal */}
-        <div className="flex flex-wrap gap-4">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={scrollToWork}
-            className="group font-sans text-sm font-medium px-6 py-5 border-foreground/20 hover:bg-foreground hover:text-background transition-all duration-300"
-          >
-            Explore My Work
-            <ArrowDown className="ml-2 w-4 h-4 transition-transform group-hover:translate-y-0.5" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="lg"
-            className="font-sans text-sm font-medium px-6 py-5 text-muted-foreground hover:text-foreground"
-          >
-            <Camera className="mr-2 w-4 h-4" />
-            View the Lens
-          </Button>
-          <Button
-            variant="ghost"
-            size="lg"
-            className="font-sans text-sm font-medium px-6 py-5 text-muted-foreground hover:text-foreground"
-          >
-            <Download className="mr-2 w-4 h-4" />
-            Download CV
-          </Button>
+          {/* Domain tags - cleaner presentation */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-10 md:mb-12">
+            {["Enterprise IT", "Global Events", "Innovation", "Visual Storytelling"].map((domain, i) => (
+              <span key={domain} className="flex items-center gap-2">
+                {i > 0 && <span className="w-1 h-1 rounded-full bg-muted-foreground/30 hidden sm:block" />}
+                <span className="font-sans text-sm text-muted-foreground">{domain}</span>
+              </span>
+            ))}
+          </div>
+
+          {/* CTAs - clearer hierarchy */}
+          <div className="flex flex-wrap items-center gap-4">
+            <Button
+              variant="default"
+              size="lg"
+              onClick={scrollToWork}
+              className="group font-sans text-sm font-medium px-7 py-6 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300"
+            >
+              Explore My Work
+              <ArrowDown className="ml-2 w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+            </Button>
+            
+            <div className="flex items-center gap-1">
+              <Button
+                variant="ghost"
+                size="lg"
+                className="font-sans text-sm font-medium px-5 py-6 text-muted-foreground hover:text-foreground"
+              >
+                <Camera className="mr-2 w-4 h-4" />
+                Visual Work
+              </Button>
+              <span className="w-px h-4 bg-border hidden sm:block" />
+              <Button
+                variant="ghost"
+                size="lg"
+                className="font-sans text-sm font-medium px-5 py-6 text-muted-foreground hover:text-foreground"
+              >
+                <Download className="mr-2 w-4 h-4" />
+                CV
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-        <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          Scroll
-        </span>
-        <div className="w-px h-12 bg-gradient-to-b from-foreground/30 to-transparent" />
+      {/* Scroll indicator - properly positioned at bottom */}
+      <div className="flex justify-center pt-8">
+        <button 
+          onClick={scrollToWork}
+          className="group flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <span className="font-mono text-[10px] tracking-[0.3em] uppercase">
+            Scroll
+          </span>
+          <div className="w-px h-8 bg-gradient-to-b from-current to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+        </button>
       </div>
     </section>
   );
