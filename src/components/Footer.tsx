@@ -1,76 +1,80 @@
-import { Linkedin, Github, Mail, Download } from "lucide-react";
+import { Linkedin, Github, Mail, Download, Phone } from "lucide-react";
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  {
+    icon: Linkedin,
+    href: "https://linkedin.com/in/divinjoseph",
+    label: "LinkedIn",
+  },
   { icon: Github, href: "#", label: "GitHub" },
-  { icon: Mail, href: "mailto:contact@divinjoseph.com", label: "Email" },
+  { icon: Mail, href: "mailto:divinjoseph517@gmail.com", label: "Email" },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative py-24 px-6 lg:px-12 border-t border-border">
+    <footer
+      id="contact"
+      className="relative py-24 px-6 lg:px-12 border-t border-border/10"
+    >
       {/* Background gradient */}
       <div
-        className="absolute inset-0 opacity-50"
+        className="absolute inset-0 opacity-50 pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse at 50% 100%, hsl(217 91% 60% / 0.03) 0%, transparent 50%)",
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 mb-16">
-          {/* Left column */}
-          <div>
-            <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">
-              Curious of systems that think.
-            </h3>
-            <p className="text-muted-foreground max-w-md mb-8">
-              Open to collaborations at the intersection of strategy, technology,
-              and creative vision. Let's build something meaningful.
-            </p>
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
+        {/* Main quote */}
+        <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+          Curious of systems that{" "}
+          <span className="text-accent-enterprise">think.</span>
+        </h3>
 
-            {/* Social links */}
-            <div className="flex gap-4">
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    aria-label={link.label}
-                    className="w-12 h-12 rounded-xl bg-muted/30 border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:border-muted-foreground/50 transition-all duration-300"
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
+        <p className="text-muted-foreground max-w-xl mx-auto mb-12">
+          Open to collaborations at the intersection of strategy, technology,
+          and creative vision. Let's build something meaningful.
+        </p>
 
-          {/* Right column */}
-          <div className="flex flex-col items-start md:items-end justify-end">
-            <a
-              href="#"
-              className="group inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-muted/30 border border-border hover:bg-muted/50 hover:border-muted-foreground/50 transition-all duration-300 mb-4"
-            >
-              <Download className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-              <span className="font-display font-medium">Download Resume</span>
-            </a>
-            <p className="text-sm text-muted-foreground">
-              Luxembourg City, Luxembourg
-            </p>
-          </div>
+        {/* Contact buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {socialLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/20 bg-card/30 text-muted-foreground hover:text-foreground hover:border-border/40 transition-all duration-300"
+              >
+                <Icon className="w-5 h-5" />
+                <span className="font-mono text-sm">{link.label}</span>
+              </a>
+            );
+          })}
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        {/* CV Download */}
+        <a
+          href="#"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors font-display font-medium text-lg"
+        >
+          <Download className="w-5 h-5" />
+          Download CV
+        </a>
+
+        {/* Location */}
+        <div className="mt-12 text-muted-foreground">
+          <p className="font-mono text-sm">Luxembourg / France</p>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-16 pt-8 border-t border-border/10">
           <p className="font-mono text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Divin Joseph. All rights reserved.
+            © {new Date().getFullYear()} Divin Joseph
           </p>
-          <p className="font-mono text-sm text-muted-foreground">
-            Engineered by{" "}
-            <span className="text-foreground font-medium">Divin</span>
+          <p className="text-xs text-muted-foreground/50 mt-2">
+            Engineered with curiosity.
           </p>
         </div>
       </div>
