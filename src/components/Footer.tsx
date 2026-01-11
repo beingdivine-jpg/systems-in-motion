@@ -1,66 +1,101 @@
-import { Linkedin, Github, Mail, Download, MapPin, ArrowUpRight } from "lucide-react";
+import { Linkedin, Mail, Download, MapPin, ArrowUpRight } from "lucide-react";
 
 const links = [
   { icon: Linkedin, href: "https://linkedin.com/in/divinjoseph", label: "LinkedIn" },
-  { icon: Github, href: "#", label: "GitHub" },
   { icon: Mail, href: "mailto:divinjoseph517@gmail.com", label: "Email" },
 ];
 
+import { ScrollReveal } from "./ScrollReveal";
+import { ChevronUp } from "lucide-react";
+
 export function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer id="contact" className="py-28 lg:py-36 px-6 lg:px-12">
-      <div className="max-w-3xl mx-auto">
+    <footer id="contact" className="py-32 lg:py-48 px-6 lg:px-12 relative overflow-hidden bg-secondary/30 snap-start">
+      <div className="max-w-5xl mx-auto">
         {/* Closing statement */}
-        <div className="text-center mb-16">
-          <p className="font-serif text-2xl md:text-3xl text-foreground leading-relaxed mb-4">
-            I'm interested in environments where systems are being built, tested, and improved —
-          </p>
-          <p className="font-serif text-2xl md:text-3xl italic text-muted-foreground">
-            not just maintained.
-          </p>
+        <div className="mb-32">
+          <ScrollReveal animation="blur-in">
+            <h2 className="editorial-serif text-[clamp(2rem,5vw,4rem)] leading-[1.1] text-foreground mb-8">
+              I'm interested in environments where systems are being <span className="italic text-muted-foreground/60">built, tested, and improved</span> —
+              <span className="block mt-4 text-accent-warm">not just maintained.</span>
+            </h2>
+          </ScrollReveal>
         </div>
 
-        {/* Contact links */}
-        <div className="flex flex-col items-center gap-8 mb-16">
-          <div className="flex items-center gap-6">
-            {links.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label={link.label}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span className="font-sans text-sm">{link.label}</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition-all" />
-                </a>
-              );
-            })}
+        <div className="grid lg:grid-cols-2 gap-24 items-end mb-32">
+          {/* Left: Contact Info */}
+          <div className="space-y-12">
+            <ScrollReveal animation="fade-up" delay={200}>
+              <div className="flex flex-col gap-8">
+                <span className="technical-mono text-xs tracking-[0.5em] opacity-40 uppercase">Connect // Direct</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {links.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        className="group flex items-center justify-between p-6 border border-border/40 rounded-2xl bg-background/50 backdrop-blur-sm hover:bg-foreground hover:text-background transition-all duration-700"
+                        aria-label={link.label}
+                      >
+                        <div className="flex items-center gap-4">
+                          <Icon className="w-5 h-5 opacity-60 group-hover:opacity-100" />
+                          <span className="technical-mono text-[10px]">{link.label}</span>
+                        </div>
+                        <ArrowUpRight className="w-4 h-4 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-500" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal animation="fade-up" delay={400}>
+              <div className="flex items-center gap-4 text-muted-foreground">
+                <MapPin className="w-4 h-4 opacity-40" />
+                <span className="technical-mono text-[9px] tracking-widest uppercase">Base: Luxembourg / France</span>
+              </div>
+            </ScrollReveal>
           </div>
 
-          {/* CV Download */}
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded font-sans text-sm font-medium hover:bg-foreground/90 transition-colors"
-          >
-            <Download className="w-4 h-4" />
-            Download CV
-          </a>
-        </div>
+          {/* Right: Actions */}
+          <div className="flex flex-col items-end gap-12">
+            <ScrollReveal animation="scale-up" delay={600}>
+              <a
+                href="#"
+                className="group relative inline-flex items-center gap-4 px-12 py-6 bg-foreground text-background rounded-full overflow-hidden hover:scale-105 transition-transform duration-700"
+              >
+                <div className="absolute inset-0 bg-accent-enterprise origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-in-out" />
+                <Download className="w-5 h-5 relative z-10" />
+                <span className="technical-mono text-xs relative z-10 font-bold tracking-[0.3em]">Download CV</span>
+              </a>
+            </ScrollReveal>
 
-        {/* Location */}
-        <div className="flex items-center justify-center gap-2 text-muted-foreground mb-20">
-          <MapPin className="w-4 h-4" />
-          <span className="font-mono text-sm">Luxembourg / France</span>
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-4 technical-mono text-[9px] opacity-40 hover:opacity-100 transition-opacity group"
+            >
+              Back to Surface
+              <div className="w-10 h-10 border border-border/40 rounded-full flex items-center justify-center group-hover:bg-border/20 transition-colors">
+                <ChevronUp className="w-4 h-4" />
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Bottom */}
-        <div className="text-center pt-8 border-t border-border/50">
-          <p className="font-mono text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Divin Joseph
+        <div className="pt-12 border-t border-border/20 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="technical-mono text-[8px] opacity-30">
+            Design & Build by Divin J. // {new Date().getFullYear()} ©
           </p>
+          <div className="flex items-center gap-12">
+            <span className="technical-mono text-[8px] opacity-30">Built with React & Vite</span>
+            <span className="technical-mono text-[8px] opacity-30">Typography: Cormorant & IBM Plex</span>
+          </div>
         </div>
       </div>
     </footer>

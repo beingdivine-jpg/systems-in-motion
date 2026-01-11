@@ -1,126 +1,178 @@
-import { Building2, Radio } from "lucide-react";
-
-const experiences = [
-  {
-    company: "Paris 2024 Olympics & Paralympics",
-    location: "France",
-    role: "Liaison Officer",
-    period: "Jul – Sep 2024",
-    description: "Coordinated broadcasting relations for 50+ international rights holders including NBC, BBC, Eurosport, and Viacom. Managed influencer relations during live events. Bridge between operations, media, and technical teams.",
-    tags: ["50+ Broadcasters", "2 Venues", "15+ Influencers"],
-    current: false,
-    highlight: true,
-  },
-  {
-    company: "Ferrero Group",
-    location: "Luxembourg",
-    role: "Group IT Project Manager Assistant",
-    period: "Oct 2025 – Present",
-    description: "Global IT Asset Management project at headquarters. Working across multi-country operations to optimize technology portfolio.",
-    tags: ["ITAM", "SAP", "Portfolio Optimization"],
-    current: true,
-    highlight: false,
-  },
-  {
-    company: "NSI IT Software & Services",
-    location: "Luxembourg",
-    role: "IT Consultant",
-    period: "Oct 2025 – Present",
-    description: "Consulting on IT solutions and enterprise services.",
-    tags: ["Consulting", "IT Services"],
-    current: true,
-    highlight: false,
-  },
-  {
-    company: "Ferrero Group",
-    location: "Luxembourg",
-    role: "Software Asset Management Analyst",
-    period: "Mar – Sep 2025",
-    description: "Contract oversight and compliance management for Group IT.",
-    tags: ["SAM", "Contracts", "Compliance"],
-    current: false,
-    highlight: false,
-  },
-];
+import { ScrollReveal } from "./ScrollReveal";
+import { experiences, researchProjects } from "@/data/enterprise";
+import { ResearchProject } from "@/types";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { SectionHeader } from "./SectionHeader";
 
 export function EnterpriseSection() {
   return (
-    <section id="enterprise" className="py-28 lg:py-36 px-6 lg:px-12">
-      <div className="max-w-5xl mx-auto">
-        {/* Section header */}
-        <div className="flex items-center gap-4 mb-16">
-          <Building2 className="w-5 h-5 text-accent-enterprise" />
-          <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-            Enterprise & Operations
-          </span>
-          <div className="flex-1 h-px bg-border" />
-        </div>
+    <section id="enterprise" className="py-32 lg:py-48 px-6 lg:px-12 relative overflow-hidden min-h-screen snap-start flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto">
+        <ScrollReveal animation="fade-up" delay={100}>
+          <SectionHeader number="03" title="Enterprise & Operations">
+            <h2 className="editorial-serif text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] tracking-tighter">
+              Orchestrating <span className="italic text-muted-foreground/60">complexity</span> in
+              global <span className="border-b-2 border-accent-enterprise/20 pb-1">environments.</span>
+            </h2>
+          </SectionHeader>
+        </ScrollReveal>
 
-        {/* Section intro */}
-        <div className="mb-20">
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.15] mb-6">
-            Global events, IT systems,
-            <br />
-            <span className="text-muted-foreground italic">structured environments.</span>
-          </h2>
-        </div>
+        <div className="flex flex-col gap-12 lg:gap-16 mb-32 lg:mb-48 relative">
+          {/* Vertical Timeline Line */}
+          <div className="absolute left-0 md:left-[21%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border/50 to-transparent hidden md:block" />
 
-        {/* Experience list */}
-        <div>
           {experiences.map((exp, idx) => (
-            <article
-              key={idx}
-              className={`group grid md:grid-cols-[160px_1fr] gap-4 md:gap-8 py-8 border-b border-border/50 last:border-0 ${
-                exp.highlight ? "bg-accent-operations/5 -mx-6 px-6 rounded-lg border-accent-operations/20" : ""
-              }`}
-            >
-              {/* Left - meta */}
-              <div className="flex md:flex-col items-baseline md:items-start gap-3 md:gap-1">
-                <div className="flex items-center gap-2">
-                  {exp.highlight && <Radio className="w-4 h-4 text-accent-operations" />}
-                  <p className="font-mono text-sm text-muted-foreground">{exp.period}</p>
-                </div>
-                {exp.current && (
-                  <span className="inline-flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent-operations animate-pulse" />
-                    <span className="font-mono text-xs text-accent-operations">Active</span>
-                  </span>
-                )}
-              </div>
-
-              {/* Right - content */}
-              <div>
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-                  <h3 className={`font-serif text-xl font-medium text-foreground group-hover:text-accent-enterprise transition-colors ${
-                    exp.highlight ? "text-accent-operations group-hover:text-accent-operations" : ""
-                  }`}>
-                    {exp.company}
-                  </h3>
-                  <span className="text-muted-foreground/40">·</span>
-                  <p className="font-sans text-sm text-muted-foreground">{exp.role}</p>
-                </div>
-                <p className="font-sans text-sm text-muted-foreground/80 leading-relaxed mb-4 max-w-xl">
-                  {exp.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`px-2.5 py-1 text-xs font-mono rounded ${
-                        exp.highlight 
-                          ? "text-accent-operations bg-accent-operations/10" 
-                          : "text-muted-foreground bg-secondary/80"
-                      }`}
-                    >
-                      {tag}
+            <div key={idx} className="relative">
+              <ScrollReveal animation="fade-up" delay={idx * 100} duration={1000}>
+                <article className="group grid md:grid-cols-[20%_1fr] gap-8 lg:gap-16 relative">
+                  {/* Left: Metadata */}
+                  <div className="hidden md:flex flex-col items-end text-right pt-2 relative z-10">
+                    <span className={`technical-mono text-sm mb-2 ${exp.current ? "text-accent-operations" : "opacity-40"}`}>
+                      {exp.period}
                     </span>
-                  ))}
-                </div>
-              </div>
-            </article>
+                    <span className="technical-mono text-xs opacity-40">{exp.location}</span>
+
+                    {/* Timeline Node */}
+                    <div className={`absolute right-[-33px] lg:right-[-65px] top-3 w-3 h-3 rounded-full border-2 bg-background transition-colors duration-500 ${exp.current ? "border-accent-operations" : "border-border group-hover:border-accent-enterprise"}`} />
+                  </div>
+
+                  {/* Right: Content Card */}
+                  <div className="relative p-8 rounded-3xl border border-border/40 bg-secondary/5 hover:bg-secondary/10 transition-all duration-500 group-hover:border-accent-enterprise/30">
+                    {/* Mobile Metadata */}
+                    <div className="flex md:hidden items-center gap-4 mb-6">
+                      <span className={`technical-mono text-xs ${exp.current ? "text-accent-operations" : "opacity-60"}`}>
+                        [{exp.period}]
+                      </span>
+                      <div className="h-px bg-border/40 flex-1" />
+                      <span className="technical-mono text-xs opacity-60">{exp.location}</span>
+                    </div>
+
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+                      <div>
+                        <h3 className="editorial-serif text-3xl mb-1 group-hover:text-accent-enterprise transition-colors">
+                          {exp.company}
+                        </h3>
+                        <p className="technical-mono text-accent-enterprise/60">{exp.role}</p>
+                      </div>
+                      {exp.current && (
+                        <span className="self-start technical-mono text-[10px] text-accent-operations bg-accent-operations/10 px-3 py-1 rounded-full border border-accent-operations/20">
+                          Active_System
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="body-sans text-lg text-muted-foreground mb-8 max-w-3xl leading-relaxed">
+                      {exp.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {exp.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="technical-mono px-3 py-1.5 bg-background border border-border/50 text-foreground/60 rounded-full text-[10px] group-hover:border-accent-enterprise/20 transition-colors"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              </ScrollReveal>
+            </div>
           ))}
+        </div>
+
+        {/* --- STRATEGIC RESEARCH --- */}
+        <div className="border-t border-border/40 pt-24 lg:pt-32">
+          <ScrollReveal animation="fade-up" delay={100}>
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-8 h-px bg-accent-enterprise/50" />
+              <span className="technical-mono text-xs tracking-widest uppercase opacity-60">Strategic Research & Analysis</span>
+            </div>
+          </ScrollReveal>
+
+          <div className="relative">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-6">
+                {researchProjects.map((project, index) => (
+                  <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                    <ScrollReveal animation="fade-left" delay={index * 100} className="h-full">
+                      {project.link ? (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block h-full group relative bg-secondary/5 hover:bg-secondary/10 border border-border/40 hover:border-accent-enterprise/30 rounded-[2rem] p-8 transition-all duration-500 overflow-hidden cursor-pointer"
+                        >
+                          <ProjectContent project={project} />
+                        </a>
+                      ) : (
+                        <div className="h-full group relative bg-secondary/5 hover:bg-secondary/10 border border-border/40 hover:border-accent-enterprise/30 rounded-[2rem] p-8 transition-all duration-500 overflow-hidden">
+                          <ProjectContent project={project} />
+                        </div>
+                      )}
+                    </ScrollReveal>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              <div className="flex gap-4 justify-end mt-8 pr-12">
+                <CarouselPrevious className="static translate-y-0 translate-x-0 bg-transparent border-border hover:bg-secondary hover:text-foreground h-12 w-12" />
+                <CarouselNext className="static translate-y-0 translate-x-0 bg-transparent border-border hover:bg-secondary hover:text-foreground h-12 w-12" />
+              </div>
+            </Carousel>
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ProjectContent({ project }: { project: ResearchProject }) {
+  return (
+    <>
+      <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-40 transition-opacity duration-500 transform group-hover:rotate-12 group-hover:scale-110 origin-top-right">
+        {project.icon}
+      </div>
+
+      <div className="mb-6">
+        <span className="technical-mono text-[10px] text-accent-enterprise/80 mb-2 block">{project.type}</span>
+        <h3 className="editorial-serif text-2xl lg:text-3xl leading-tight mb-2 group-hover:text-foreground transition-colors">
+          {project.title}
+        </h3>
+        <p className="technical-mono text-xs opacity-60">{project.subtitle}</p>
+      </div>
+
+      <p className="body-sans text-muted-foreground mb-8 text-sm lg:text-base leading-relaxed">
+        {project.description}
+      </p>
+
+      <div className="flex flex-wrap gap-3 mt-auto">
+        {project.stats.map((stat, i) => (
+          <span key={i} className="inline-flex items-center text-[10px] technical-mono text-muted-foreground/70 bg-background/50 px-3 py-1 rounded-sm border border-border/20">
+            {stat}
+          </span>
+        ))}
+      </div>
+
+      <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center gap-2">
+        {project.link && <span className="technical-mono text-[10px] text-accent-enterprise">{project.cta || "View Details"}</span>}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent-enterprise">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </div>
+    </>
   );
 }

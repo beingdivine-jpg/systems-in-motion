@@ -86,6 +86,9 @@ export default {
         "fade-in": "fade-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards",
         "fade-in-left": "fade-in-left 0.6s ease-out forwards",
       },
+      transitionTimingFunction: {
+        'premium': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
