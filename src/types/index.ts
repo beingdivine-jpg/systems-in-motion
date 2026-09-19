@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
 
 export interface Experience {
     company: string;
@@ -50,14 +51,20 @@ export interface Project {
     cta?: string;
 }
 
+export interface ProjectLink {
+    label: string;
+    href: string;
+}
+
 export interface Venture {
     title: string;
     role: string;
-    period: string;
+    period?: string;
     description: string;
     story?: string[];
+    links?: ProjectLink[];
     highlights: string[];
-    icon: any; // Lucide icon component type
+    icon: LucideIcon;
 }
 
 export interface Competition {
@@ -65,6 +72,8 @@ export interface Competition {
     result: string;
     location: string;
     year: string;
+    description?: string;
+    links?: ProjectLink[];
     image?: string;
     link?: string;
     slides?: string[];

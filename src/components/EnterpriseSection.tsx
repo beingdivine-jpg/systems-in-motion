@@ -13,9 +13,9 @@ import { SectionHeader } from "./SectionHeader";
 export function EnterpriseSection() {
   return (
     <section id="enterprise" className="py-32 lg:py-48 px-6 lg:px-12 relative overflow-hidden min-h-screen snap-start flex flex-col justify-center">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <ScrollReveal animation="fade-up" delay={100}>
-          <SectionHeader number="03" title="Enterprise & Operations">
+          <SectionHeader number="02" title="Enterprise & Operations">
             <h2 className="editorial-serif text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] tracking-tighter">
               Orchestrating <span className="italic text-muted-foreground/60">complexity</span> in
               global <span className="border-b-2 border-accent-enterprise/20 pb-1">environments.</span>
@@ -30,7 +30,7 @@ export function EnterpriseSection() {
           {experiences.map((exp, idx) => (
             <div key={idx} className="relative">
               <ScrollReveal animation="fade-up" delay={idx * 100} duration={1000}>
-                <article className="group grid md:grid-cols-[20%_1fr] gap-8 lg:gap-16 relative">
+                <article className="group grid grid-cols-1 md:grid-cols-[20%_minmax(0,1fr)] gap-8 lg:gap-16 relative">
                   {/* Left: Metadata */}
                   <div className="hidden md:flex flex-col items-end text-right pt-2 relative z-10">
                     <span className={`technical-mono text-sm mb-2 ${exp.current ? "text-accent-operations" : "opacity-40"}`}>
@@ -45,11 +45,11 @@ export function EnterpriseSection() {
                   {/* Right: Content Card */}
                   <div className="relative p-8 rounded-3xl border border-border/40 bg-secondary/5 hover:bg-secondary/10 transition-all duration-500 group-hover:border-accent-enterprise/30">
                     {/* Mobile Metadata */}
-                    <div className="flex md:hidden items-center gap-4 mb-6">
+                    <div className="flex flex-col sm:flex-row md:hidden items-start sm:items-center gap-4 mb-6">
                       <span className={`technical-mono text-xs ${exp.current ? "text-accent-operations" : "opacity-60"}`}>
                         [{exp.period}]
                       </span>
-                      <div className="h-px bg-border/40 flex-1" />
+                      <div className="hidden sm:block h-px bg-border/40 flex-1" />
                       <span className="technical-mono text-xs opacity-60">{exp.location}</span>
                     </div>
 

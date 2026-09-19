@@ -4,8 +4,8 @@ import { Project } from "@/types";
 export const projects: Project[] = [
     {
         title: "Finds Discount",
-        category: "Strategic brand identity & market analysis framework.",
-        description: "Strategic brand identity & market analysis framework.",
+        category: "Brand identity & market analysis",
+        description: "Brand identity and a market analysis presentation for Finds Discount.",
         icon: <Workflow className="w-6 h-6 text-accent-visual" />,
         delay: 200,
         gradient: "from-accent-visual/20 to-transparent",
@@ -15,8 +15,8 @@ export const projects: Project[] = [
     },
     {
         title: "Focusrite",
-        category: "Digital experience design for global audio products.",
-        description: "Digital experience design for global audio products.",
+        category: "Digital experience design",
+        description: "Digital experience design for audio products.",
         icon: <Palette className="w-6 h-6 text-accent-visual" />,
         delay: 300,
         gradient: "from-purple-500/20 to-transparent",
@@ -25,9 +25,9 @@ export const projects: Project[] = [
         cta: "View Case Study"
     },
     {
-        title: "Russian-Ukrainian War",
-        category: "Complex geopolitical data visualized through narrative structure.",
-        description: "Complex geopolitical data visualized through narrative structure.",
+        title: "Russia–Ukraine War",
+        category: "Research presentation",
+        description: "A visual presentation of research on the Russia–Ukraine war.",
         icon: <Copy className="w-6 h-6 text-accent-visual" />,
         delay: 400,
         gradient: "from-blue-500/20 to-transparent",
@@ -37,8 +37,8 @@ export const projects: Project[] = [
     },
     {
         title: "SparkleSweep",
-        category: "Modern brand identity and responsive UI/UX design.",
-        description: "Modern brand identity and responsive UI/UX design.",
+        category: "Brand & interface design",
+        description: "Brand identity and responsive interface design for SparkleSweep.",
         icon: <Layout className="w-6 h-6 text-accent-visual" />,
         delay: 500,
         gradient: "from-emerald-500/20 to-transparent",

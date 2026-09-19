@@ -4,7 +4,6 @@ import { HowIWorkSection } from "@/components/HowIWorkSection";
 import { EnterpriseSection } from "@/components/EnterpriseSection";
 import { InnovationSection } from "@/components/InnovationSection";
 import { VisualSection } from "@/components/VisualSection";
-import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -14,7 +13,6 @@ const Index = () => {
       <EnterpriseSection />
       <InnovationSection />
       <VisualSection />
-      <Footer />
     </Layout>
   );
 };

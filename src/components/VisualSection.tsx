@@ -15,21 +15,19 @@ export function VisualSection() {
   return (
     <section id="visual" className="py-32 lg:py-48 px-6 lg:px-12 bg-background relative overflow-hidden min-h-screen snap-start flex flex-col justify-center">
       <div className="max-w-7xl mx-auto">
-        {/* --- PART 1: THE FOUNDATION (Structural Narrative) --- */}
+        {/* --- PART 1: VISUAL STORYTELLING --- */}
 
         {/* Header & Philosophy */}
         <ScrollReveal animation="fade-up" delay={100}>
-          <SectionHeader number="04" title="Structural Narrative">
+          <SectionHeader number="04" title="Visual Storytelling">
             <h2 className="editorial-serif text-[clamp(2rem,5vw,4rem)] leading-[0.95] tracking-tighter mb-8">
-              Structural Narrative & <br />
-              <span className="text-muted-foreground/60">Aesthetic Framework</span>
+              Making complex ideas <br />
+              <span className="text-muted-foreground/60">clear through design.</span>
             </h2>
 
             <div className="pl-6 border-l-2 border-accent-visual/30">
               <p className="body-sans text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                While the foundational research and data analysis for these projects were the result of collaborative group efforts,
-                the <strong className="text-foreground font-medium">structural narrative, aesthetic direction, and final visual execution</strong> presented here are solely my own work.
-                I translated raw data into compelling, immersive stories through rigorous information architecture and creative direction.
+                The research and analysis behind these projects were a team effort. The <strong className="text-foreground font-medium">storytelling, visual direction and final presentation design</strong> are my own. Each piece explores how to make a complex subject easier to understand.
               </p>
             </div>
           </SectionHeader>

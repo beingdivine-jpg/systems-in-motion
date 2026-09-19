@@ -23,17 +23,17 @@ export function HowIWorkSection() {
             <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
               <ScrollReveal animation="fade-up" delay={200}>
                 <div className="space-y-6">
-                  <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">The Approach</span>
+                  <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">Technology in Practice</span>
                   <p className="body-sans text-xl leading-relaxed text-muted-foreground">
-                    I translate between <span className="text-foreground font-medium">technology</span> and <span className="text-foreground font-medium">execution</span>. My role is to find the narrative thread in high-pressure operations.
+                    I’m drawn to what happens after an organisation adopts new technology: how it is used, managed and kept useful. <span className="text-foreground font-medium">IT asset management</span> connects that interest with my studies and the way I think about AI.
                   </p>
                 </div>
               </ScrollReveal>
               <ScrollReveal animation="fade-up" delay={300}>
                 <div className="space-y-6">
-                  <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">The Goal</span>
+                  <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">Following Curiosity</span>
                   <p className="body-sans text-xl leading-relaxed text-muted-foreground">
-                    I thrive where clarity is still forming — shaping fragmented inputs into <span className="italic text-foreground">precise strategy</span> and actionable outcomes.
+                    I enjoy <span className="italic text-foreground">being a beginner again</span>. Building with AI, exploring unfamiliar subjects and meeting people give me new ways to think. Each project leaves me with something I didn’t know when I started.
                   </p>
                 </div>
               </ScrollReveal>
@@ -44,9 +44,9 @@ export function HowIWorkSection() {
           <div className="lg:col-span-5 lg:pt-0">
             <ScrollReveal animation="fade-up" delay={400}>
               <div className="space-y-6 pt-2">
-                <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">Global Lens</span>
+                <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">Making Room for Luck</span>
                 <p className="body-sans text-lg text-muted-foreground leading-relaxed">
-                  Spanning Group IT strategic management at Ferrero headquarters in Luxembourg, Olympic venue broadcast operations in Paris, strong esports contributions across Asia, and deep engagement with innovation and startup ecosystems, I view systems not as fixed structures but as <span className="text-foreground font-medium">fluid entities in constant motion</span>.
+                  After competitive gaming, I saw luck as something I had to wait for. <a href="https://paulgraham.com/greatwork.html" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Paul Graham’s advice</a> to <span className="text-foreground font-medium">“make yourself a big target for luck”</span> changed that. I began exploring, building and meeting people without knowing where it would lead. I still can’t choose when an opportunity arrives, but I can keep learning and putting myself in situations where one might.
                 </p>
               </div>
             </ScrollReveal>

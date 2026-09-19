@@ -1,33 +1,104 @@
-import { Gamepad2, Rocket, Users } from "lucide-react";
-import { Competition } from "@/types";
+import { Gamepad2, Handshake, Lightbulb, Rocket, ShieldCheck, Users } from "lucide-react";
+import type { Competition, Venture } from "@/types";
 
-export const ventures = [
+export const recentProjects: Venture[] = [
+    {
+        title: "ClinTrial",
+        role: "Product, Business & Pitch",
+        period: "8–9 July 2026 · Paris",
+        description: "At the RAISE Summit hackathon, our five-person team built ClinTrial: an AI agent that checks clinical-trial invoices against protocols, contracts, budgets and payment history. I led product definition, market-fit analysis, the business case and the pitch. Our team won first place in the Vultr track.",
+        highlights: ["RAISE 2026", "1st Place · Vultr Track", "AI Invoice Review"],
+        links: [{ label: "Watch the demo", href: "https://www.youtube.com/watch?v=ZG7tVEBMd9s" }],
+        icon: ShieldCheck,
+    },
+    {
+        title: "Loki Intelligence",
+        role: "Product & Go-to-Market",
+        period: "June 2026 · Amsterdam",
+        description: "At MEGATHON, our four-person team built an AI security-testing agent that assessed 30 system architectures and produced 100+ verified findings in 48 hours. I led product management and go-to-market planning. One build earned us two first places and one second place. I later stepped away because of other commitments.",
+        story: [
+            "We placed first in Build with Devin (Cognition), first in Prompt to Paid (Base44), and second in the Startup Track (Mollie, Visa and Peak).",
+            "The team has since continued as Loki Intelligence B.V., with paying clients and a place in the Base44 Accelerator Program. My contribution was to the early product and go-to-market work; I’m no longer part of the team."
+        ],
+        highlights: ["MEGATHON", "2× 1st · 1× 2nd", "One Build"],
+        links: [{ label: "Visit Loki Intelligence", href: "https://loki-intelligence.com" }],
+        icon: Lightbulb,
+    },
+];
+
+export const recentResults: Competition[] = [
+    {
+        title: "DeBond",
+        result: "AI Café Luxembourg · Top 8 Finalist",
+        location: "Cercle Cité, Luxembourg",
+        year: "May 2026",
+        description: "Amrit Gill and I co-developed a concept for an AI co-pilot that turns battery-passport data into dismantling and recovery plans. I led the framing, safety architecture and pitch. The design uses safety rules to validate plans and requires expert approval before execution. It began at the World Engineering Day WFEO Hackathon and reached the AI Café finals. DeBond remains a concept.",
+        links: [{ label: "Read the concept", href: "https://drive.google.com/file/d/1WOqdXxZBJbWw9xhkq-nXENqe0zAz5fij/view" }],
+    },
+    {
+        title: "Beyond the List",
+        result: "BärnHäckt · PostFinance Challenge",
+        location: "Bern, Switzerland",
+        year: "21–23 August 2026",
+        description: "Our team built an AI early-warning layer for PostFinance business banking, using everyday SME transactions to highlight financial risks and explain possible next steps. I contributed to problem framing and product work. We didn’t win the challenge, but PostFinance has since asked us to develop the idea further.",
+        links: [{ label: "About BärnHäckt", href: "https://bernhackt.ch" }],
+    },
+];
+
+export const communityContributions: Venture[] = [
+    {
+        title: "ForgeLUX",
+        role: "Contributor",
+        description: "I contribute to ForgeLUX, a collective community in Luxembourg. We’re planning our first buildathon together.",
+        highlights: ["Collective Community", "First Buildathon Planned"],
+        icon: Users,
+    },
+    {
+        title: "Lovable",
+        role: "Luxembourg City Lead",
+        period: "Sep 2026 – Present",
+        description: "I’m part of Lovable’s ambassador programme as Luxembourg City Lead.",
+        highlights: ["Ambassador Programme", "Luxembourg"],
+        icon: Lightbulb,
+    },
+    {
+        title: "Tectonic",
+        role: "Hackathon Support Lead",
+        period: "Aug 2026 – Present",
+        description: "I volunteer as a Hackathon Support Lead with Tectonic. The event is planned across seven Belgian cities.",
+        highlights: ["Volunteer Role", "7 Cities Planned"],
+        icon: Handshake,
+    },
+];
+
+export const ventures: Venture[] = [
     {
         title: "XentriX Esports",
         role: "Co-Founder",
         period: "2018 – 2023",
         description: "We started out in a small suburb, playing on low-end devices with nothing but passion. Opportunities were limited, so instead of waiting, we decided to create our own.",
         story: [
-            "What began as a simple love for gaming slowly grew into something bigger. From the ground up, we created an esports organization that grew through grit, not privilege. We worked our way up—from local grounds to national stages—learning everything the hard way. Along the journey, we produced several Asia Top 10 players and even two Asia Rank #1 in PUBG Mobile (Season 14). We saw our players get sponsored and acquired, and watched talent grow beyond what we ever imagined.",
-            "We also wanted to change who gets seen in esports. That led us to build one of South India’s earliest all-female professional PUBG Mobile squads, and later organise Starburst Women’s League, one of India’s first tournaments created exclusively for women.",
-            "It was never just about winning games. It was about giving people the exposure and chances we never had."
+            "XentriX grew from a small group of players on low-end devices into an esports organisation. Together, we helped players develop, find sponsorship and move on to other teams.",
+            "Players in our organisation reached Asia’s top 10, including two who ranked #1 in PUBG Mobile Season 14.",
+            "We also built an all-female professional PUBG Mobile squad in South India and organised Starburst Women’s League, a tournament for women. We wanted more players to have the opportunity to compete and be seen.",
+            "For me, it was about giving other players the exposure and chances we had struggled to find ourselves."
         ],
-        highlights: ["Asia #1 Rank", "5 Years", "Women's League"],
+        highlights: ["Player Development", "5 Years", "Women's League"],
         icon: Gamepad2,
     },
     {
         title: "Finds",
         role: "Project Coordinator",
         period: "2024",
-        description: "Coordinated a small cross-functional team to successfully develop a product (app) that directly contributed to a core operational pillar of a high-growth, Paris-based startup, Finds, delivered within an ambitious one-month deadline.",
-        highlights: ["Product Launch", "Cross-functional Leadership", "Paris Startup"],
+        description: "I coordinated a small team working on a dynamic-pricing concept for surplus fashion inventory at Finds. We explored how pricing could help the business sell stock that might otherwise remain unsold.",
+        highlights: ["Dynamic Pricing", "Surplus Inventory", "Team Coordination"],
         icon: Rocket,
     },
     {
         title: "Under 25 Universe",
-        role: "Event Coordinator",
-        period: "2022 – 2023",
-        description: "Contributed to a unique young team transforming youth culture into a student-powered leadership and learning ecosystem, helping build one of Asia’s largest youth festivals while actively involved in end-to-end event planning, coordination, and on-ground execution.",
+        role: "Intern (Hustler)",
+        period: "Nov 2022 – Mar 2023",
+        description: "As part of the Under 25 team, I helped plan and coordinate the youth festival and supported on-ground execution.",
         highlights: ["35,000+ Attendees", "3-Day Festival"],
         icon: Users,
     },

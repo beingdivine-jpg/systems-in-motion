@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Download, MapPin, ArrowUpRight } from "lucide-react";
+import { Linkedin, Mail, MapPin, ArrowUpRight } from "lucide-react";
 
 const links = [
   { icon: Linkedin, href: "https://linkedin.com/in/divinjoseph", label: "LinkedIn" },
@@ -57,24 +57,13 @@ export function Footer() {
             <ScrollReveal animation="fade-up" delay={400}>
               <div className="flex items-center gap-4 text-muted-foreground">
                 <MapPin className="w-4 h-4 opacity-40" />
-                <span className="technical-mono text-[9px] tracking-widest uppercase">Base: Luxembourg / France</span>
+                <span className="technical-mono text-[9px] tracking-widest uppercase">Base: Luxembourg</span>
               </div>
             </ScrollReveal>
           </div>
 
           {/* Right: Actions */}
           <div className="flex flex-col items-end gap-12">
-            <ScrollReveal animation="scale-up" delay={600}>
-              <a
-                href="#"
-                className="group relative inline-flex items-center gap-4 px-12 py-6 bg-foreground text-background rounded-full overflow-hidden hover:scale-105 transition-transform duration-700"
-              >
-                <div className="absolute inset-0 bg-accent-enterprise origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-in-out" />
-                <Download className="w-5 h-5 relative z-10" />
-                <span className="technical-mono text-xs relative z-10 font-bold tracking-[0.3em]">Download CV</span>
-              </a>
-            </ScrollReveal>
-
             <button
               onClick={scrollToTop}
               className="flex items-center gap-4 technical-mono text-[9px] opacity-40 hover:opacity-100 transition-opacity group"

@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { Magnetic } from "./Magnetic";
 import { navItems } from "@/data/navigation";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,20 @@ export function Navigation() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        menuTriggerRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -60,9 +75,13 @@ export function Navigation() {
 
           {/* Mobile menu trigger */}
           <button
+            ref={menuTriggerRef}
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 focus:outline-none group relative z-50"
+            className="md:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 focus-visible:outline focus-visible:outline-1 focus-visible:outline-accent-warm group relative z-50"
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <span
               className={`w-6 h-[1.5px] bg-foreground transition-all duration-500 ${isMobileMenuOpen ? "rotate-45 translate-y-[4.5px]" : ""
@@ -78,6 +97,8 @@ export function Navigation() {
 
       {/* Full-screen Editorial Mobile Menu */}
       <div
+        id="mobile-navigation"
+        aria-hidden={!isMobileMenuOpen}
         className={`fixed inset-0 z-40 bg-background/98 backdrop-blur-2xl transition-all duration-700 ease-in-out md:hidden ${isMobileMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"
           }`}
       >
@@ -90,6 +111,7 @@ export function Navigation() {
               <a
                 key={item.label}
                 href={item.href}
+                tabIndex={isMobileMenuOpen ? 0 : -1}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`editorial-serif text-5xl transition-all duration-700 hover:italic hover:text-muted-foreground ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
@@ -102,7 +124,7 @@ export function Navigation() {
 
           <div className="mt-12 flex flex-col items-center gap-4">
             <div className="w-12 h-px bg-border/40" />
-            <span className="body-sans text-[10px] font-medium opacity-40 uppercase tracking-widest">Luxembourg / France</span>
+            <span className="body-sans text-[10px] font-medium opacity-40 uppercase tracking-widest">Luxembourg</span>
           </div>
         </div>
       </div>

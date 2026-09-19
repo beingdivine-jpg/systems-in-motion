@@ -4,12 +4,15 @@ export const heroContent = {
         first: "Divin",
         last: "Joseph"
     },
-    tagline: [
+    introduction: [
+        { text: "Engineering impact at the intersection of ", highlight: false },
         { text: "strategy", highlight: true },
+        { text: ", ", highlight: false },
         { text: "technology", highlight: true },
-        { text: "creativity", highlight: true }
+        { text: ", and ", highlight: false },
+        { text: "creativity", highlight: true },
+        { text: ".", highlight: false }
     ],
-    description: "Engineering impact at the intersection of",
     cta: {
         primary: "View Systems",
         secondary: "Curriculum Vitae"

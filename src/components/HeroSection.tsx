@@ -38,11 +38,9 @@ export function HeroSection() {
             <div className="lg:pb-10 lg:pl-8 flex flex-col justify-end h-full">
               <div className="relative pl-8 py-2 border-l border-border/40">
                 <p className="body-sans text-lg md:text-2xl text-muted-foreground leading-relaxed max-w-xl">
-                  {heroContent.description} {heroContent.tagline.map((tag, i) => (
-                    <span key={i} className={tag.highlight ? "text-foreground font-medium" : ""}>
-                      {i > 0 && i < heroContent.tagline.length - 1 ? ", " : i === heroContent.tagline.length - 1 ? ", and " : ""}
-                      {tag.text}
-                      {i < heroContent.tagline.length - 1 ? "" : "."}
+                  {heroContent.introduction.map((part, i) => (
+                    <span key={i} className={part.highlight ? "text-foreground font-medium" : ""}>
+                      {part.text}
                     </span>
                   ))}
                 </p>
