@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { ScrollReveal } from "./ScrollReveal";
-import { ventures, competitions, recentProjects, recentResults, communityContributions } from "@/data/innovation";
+import { ventures, competitions, recentProjects, recentResults, builderInitiatives } from "@/data/innovation";
 import type { Competition, ProjectLink, Venture } from "@/types";
 import { SectionHeader } from "./SectionHeader";
 
@@ -43,7 +43,7 @@ export function InnovationSection() {
         <nav aria-label="Innovation directory" className="flex flex-wrap gap-x-8 gap-y-2 mb-12 lg:mb-20 border-b border-border/60 pb-6">
           {[
             ["Recent work", "recent-work"],
-            ["Community", "community"],
+            ["Builder culture", "community"],
             ["Earlier work", "earlier-work"],
           ].map(([label, id]) => (
             <a key={id} href={`#${id}`} className="technical-mono text-xs text-accent-warm min-h-11 inline-flex items-center border-b border-transparent hover:border-accent-warm focus-visible:border-accent-warm transition-colors">
@@ -60,9 +60,7 @@ export function InnovationSection() {
           <InnovationCompetitionGrid items={recentResults} />
         </InnovationSubsection>
 
-        <InnovationSubsection id="community" title="Community Contributions">
-          <InnovationProjectList items={communityContributions} compact />
-        </InnovationSubsection>
+        <BuilderCultureSection />
 
         <InnovationSubsection id="earlier-work" title="Earlier Projects & Initiatives">
           <InnovationProjectList items={ventures} />
@@ -71,6 +69,67 @@ export function InnovationSection() {
         <InnovationSubsection title="Earlier Competitions">
           <InnovationCompetitionGrid items={competitions} />
         </InnovationSubsection>
+      </div>
+    </section>
+  );
+}
+
+function BuilderCultureSection() {
+  return (
+    <section id="community" aria-labelledby="builder-culture-title" className="mt-20 pt-12 md:mt-28 md:pt-16 lg:mt-36 lg:pt-20 border-t border-border/40">
+      <ScrollReveal animation="fade-up">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 mb-12 lg:mb-16">
+          <p className="technical-mono text-xs text-accent-warm lg:col-span-4 lg:pt-3">Beyond the build</p>
+          <div className="lg:col-span-8 lg:pl-12">
+            <h3 id="builder-culture-title" className="editorial-serif text-4xl md:text-5xl lg:text-6xl leading-none tracking-tight">
+              Builders <span className="italic text-accent-warm">in motion.</span>
+            </h3>
+            <p className="body-sans text-lg text-muted-foreground mt-6 max-w-2xl">
+              Helping people find the tools, confidence and community to turn ideas into something real.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <div className="space-y-12 lg:space-y-16">
+        {builderInitiatives.map((initiative) => (
+          <ScrollReveal key={initiative.title} animation="fade-up">
+            <article className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start border-t border-border/50 pt-10 lg:pt-12">
+              <div className="lg:col-span-4 lg:sticky lg:top-32">
+                <h4 className="editorial-serif text-3xl md:text-4xl mb-3 leading-tight">{initiative.title}</h4>
+                <p className="technical-mono text-accent-warm text-xs tracking-wide">{initiative.role}</p>
+                {initiative.period && <p className="technical-mono text-[11px] text-muted-foreground mt-2">{initiative.period}</p>}
+                <InnovationLinks links={initiative.links} />
+              </div>
+
+              <div className="lg:col-span-8 lg:pl-12 lg:border-l border-border/40 min-w-0">
+                <p className="editorial-serif text-2xl md:text-3xl leading-tight mb-6">{initiative.statement}</p>
+                <div className="body-sans text-lg text-muted-foreground leading-relaxed space-y-5">
+                  <p>{initiative.description}</p>
+                  <p>{initiative.details}</p>
+                </div>
+
+                <div className="mt-8">
+                  <p className="technical-mono text-[11px] tracking-wide text-muted-foreground mb-3">{initiative.ribbonContext}</p>
+                  <dl className={`grid ${initiative.ribbon.length === 2 ? "grid-cols-2" : "grid-cols-3"} divide-x divide-border/60 border-y border-border/60 bg-background/40`}>
+                    {initiative.ribbon.map(({ value, label }) => (
+                      <div key={label} className="flex flex-col gap-2 min-w-0 px-2 min-[360px]:px-3 py-5 md:px-5">
+                        <dt className="order-2 technical-mono text-[11px] tracking-normal text-muted-foreground break-words">{label}</dt>
+                        <dd className="order-1 editorial-serif text-lg min-[360px]:text-[1.4rem] sm:text-3xl text-accent-operations leading-none">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  {initiative.source && (
+                    <a href={initiative.source.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 min-h-11 mt-1 text-xs text-muted-foreground underline underline-offset-4 decoration-border hover:text-accent-warm transition-colors">
+                      {initiative.source.label}<ExternalLink aria-hidden="true" className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
+                {initiative.closing && <p className="body-sans text-sm text-muted-foreground mt-4">{initiative.closing}</p>}
+              </div>
+            </article>
+          </ScrollReveal>
+        ))}
       </div>
     </section>
   );

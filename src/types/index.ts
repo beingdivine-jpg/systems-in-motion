@@ -70,6 +70,20 @@ export interface Venture {
     icon: LucideIcon;
 }
 
+export interface BuilderInitiative {
+    title: string;
+    role: string;
+    period?: string;
+    statement: string;
+    description: string;
+    details: string;
+    closing?: string;
+    links: ProjectLink[];
+    ribbon: { value: string; label: string }[];
+    ribbonContext: string;
+    source?: ProjectLink;
+}
+
 export interface Competition {
     title: string;
     result: string;

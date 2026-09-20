@@ -1,5 +1,5 @@
-import { Gamepad2, Handshake, Lightbulb, Rocket, ShieldCheck, Users } from "lucide-react";
-import type { Competition, Venture } from "@/types";
+import { Gamepad2, Lightbulb, Rocket, ShieldCheck, Users } from "lucide-react";
+import type { BuilderInitiative, Competition, Venture } from "@/types";
 
 export const recentProjects: Venture[] = [
     {
@@ -50,29 +50,52 @@ export const recentResults: Competition[] = [
     },
 ];
 
-export const communityContributions: Venture[] = [
+export const builderInitiatives: BuilderInitiative[] = [
     {
         title: "ForgeLUX",
-        role: "Contributor",
-        description: "I contribute to ForgeLUX, a collective community in Luxembourg. We’re planning our first buildathon together.",
-        highlights: ["Collective Community", "First Buildathon Planned"],
-        icon: Users,
+        role: "Building",
+        statement: "Giving Luxembourg’s builder culture a place to grow.",
+        description: "Hackathons across Europe showed me what happens when people have a place to build together. I wanted more of that momentum in Luxembourg, so I brought together a founding team, including students from the University of Luxembourg. Together, we’re building ForgeLUX: a community where ideas can become projects, collaborations and new ventures.",
+        details: "We’re in discussions with startups, educational institutions and other organisations in Luxembourg as we prepare our first buildathon. The aim is to give people regular opportunities to meet, build and keep going together.",
+        links: [{ label: "Explore ForgeLUX", href: "https://forgelux.lovable.app" }],
+        ribbon: [
+            { value: "Formed", label: "Founding team" },
+            { value: "Underway", label: "Partner talks" },
+            { value: "Planning", label: "Our first buildathon" },
+        ],
+        ribbonContext: "Taking shape in Luxembourg",
     },
     {
         title: "Lovable",
         role: "Luxembourg City Lead",
         period: "Sep 2026 – Present",
-        description: "I’m part of Lovable’s ambassador programme as Luxembourg City Lead.",
-        highlights: ["Ambassador Programme", "Luxembourg"],
-        icon: Lightbulb,
+        statement: "Helping people ship the idea they’ve been sitting on.",
+        description: "Lovable lets people build working software by describing what they want to create. That opens the door to students, founders and people who have never written code. I want more people in Luxembourg to experience that first moment of turning an idea into something they can actually use.",
+        details: "As Luxembourg City Lead, I’m working towards meetups, hands-on workshops and collaborations with local communities to help people build and share their first projects.",
+        closing: "Part of the Lovable Ambassador programme.",
+        links: [{ label: "Build with Lovable", href: "https://lovable.dev" }],
+        ribbon: [
+            { value: "60M", label: "Projects built" },
+            { value: "1.2M", label: "New projects / week" },
+        ],
+        ribbonContext: "On Lovable, worldwide · September 2026",
+        source: { label: "Platform figures", href: "https://lovable.dev" },
     },
     {
         title: "Tectonic",
         role: "Hackathon Support Lead",
         period: "Aug 2026 – Present",
-        description: "I volunteer as a Hackathon Support Lead with Tectonic. The event is planned across seven Belgian cities.",
-        highlights: ["Volunteer Role", "7 Cities Planned"],
-        icon: Handshake,
+        statement: "Seven cities. One shared drive to build.",
+        description: "I’m a Hackathon Support Lead with Tectonic, helping deliver its ambition for Belgium’s biggest hackathon. The 2026 event is set to bring 700+ builders together across seven cities, working on real business challenges from KBC and SD Worx.",
+        details: "The first round takes place on 30 September. The top 32 teams advance to the final in Ghent on 20 October, with a €10,000 main prize for the winning team.",
+        links: [{ label: "Explore the hackathon", href: "https://www.tectonicconf.eu/hackathon" }],
+        ribbon: [
+            { value: "700+", label: "Builders expected" },
+            { value: "7", label: "Belgian cities" },
+            { value: "€10K", label: "Main prize" },
+        ],
+        ribbonContext: "Tectonic Hackathon · 2026 edition",
+        source: { label: "Event details", href: "https://www.tectonicconf.eu/hackathon" },
     },
 ];
 
