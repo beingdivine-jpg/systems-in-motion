@@ -62,6 +62,9 @@ export interface Venture {
     period?: string;
     description: string;
     story?: string[];
+    contribution?: string;
+    outcome?: string;
+    note?: string;
     links?: ProjectLink[];
     highlights: string[];
     icon: LucideIcon;

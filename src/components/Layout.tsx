@@ -1,5 +1,4 @@
-import { ReactNode, useEffect } from "react";
-import Lenis from "lenis";
+import { ReactNode } from "react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
 import { CustomCursor } from "./CustomCursor";
@@ -10,10 +9,6 @@ interface LayoutProps {
 }
 
 export function Layout({ children, className = "" }: LayoutProps) {
-    useEffect(() => {
-        // Native browser scrolling is preferred for CSS Scroll Snapping
-    }, []);
-
     return (
         <div className={`min-h-screen bg-background text-foreground ${className}`}>
             {/* Cinematic Ambience */}

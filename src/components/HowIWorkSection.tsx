@@ -13,17 +13,17 @@ export function HowIWorkSection() {
         <ScrollReveal animation="fade-up">
           <SectionHeader number="01" title="Philosophy">
             <h2 className="editorial-serif text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-tight text-foreground">
-              Moving between <span className="italic text-muted-foreground/40">structured</span> systems and <span className="text-accent-operations">ambiguous</span> spaces.
+              Moving between <span className="italic text-muted-foreground/80">structured</span> systems and <span className="text-accent-operations">ambiguous</span> spaces.
             </h2>
           </SectionHeader>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start mb-48">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start mb-20 md:mb-32 lg:mb-48">
           <div className="lg:col-span-7">
             <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
               <ScrollReveal animation="fade-up" delay={200}>
                 <div className="space-y-6">
-                  <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">Technology in Practice</span>
+                  <span className="technical-mono text-xs tracking-widest text-accent-enterprise block">Technology in Practice</span>
                   <p className="body-sans text-xl leading-relaxed text-muted-foreground">
                     I’m drawn to what happens after an organisation adopts new technology: how it is used, managed and kept useful. <span className="text-foreground font-medium">IT asset management</span> connects that interest with my studies and the way I think about AI.
                   </p>
@@ -31,7 +31,7 @@ export function HowIWorkSection() {
               </ScrollReveal>
               <ScrollReveal animation="fade-up" delay={300}>
                 <div className="space-y-6">
-                  <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">Following Curiosity</span>
+                  <span className="technical-mono text-xs tracking-widest text-accent-enterprise block">Following Curiosity</span>
                   <p className="body-sans text-xl leading-relaxed text-muted-foreground">
                     I enjoy <span className="italic text-foreground">being a beginner again</span>. Building with AI, exploring unfamiliar subjects and meeting people give me new ways to think. Each project leaves me with something I didn’t know when I started.
                   </p>
@@ -44,7 +44,7 @@ export function HowIWorkSection() {
           <div className="lg:col-span-5 lg:pt-0">
             <ScrollReveal animation="fade-up" delay={400}>
               <div className="space-y-6 pt-2">
-                <span className="technical-mono text-[10px] uppercase tracking-widest text-accent-enterprise/60 block">Making Room for Luck</span>
+                <span className="technical-mono text-xs tracking-widest text-accent-enterprise block">Making Room for Luck</span>
                 <p className="body-sans text-lg text-muted-foreground leading-relaxed">
                   After competitive gaming, I saw luck as something I had to wait for. <a href="https://paulgraham.com/greatwork.html" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Paul Graham’s advice</a> to <span className="text-foreground font-medium">“make yourself a big target for luck”</span> changed that. I began exploring, building and meeting people without knowing where it would lead. I still can’t choose when an opportunity arrives, but I can keep learning and putting myself in situations where one might.
                 </p>
@@ -54,17 +54,17 @@ export function HowIWorkSection() {
         </div>
 
         {/* Education Refinement */}
-        <div className="pt-32 border-t border-border/40">
+        <div className="pt-16 md:pt-24 lg:pt-32 border-t border-border/40">
           <ScrollReveal animation="fade-up">
-            <div className="flex items-center gap-8 mb-24">
-              <span className="technical-mono text-xs tracking-[0.4em] uppercase opacity-40">Academics // Records</span>
+            <div className="flex items-center gap-8 mb-12 lg:mb-24">
+              <span className="technical-mono text-xs tracking-[0.2em] text-muted-foreground">Academics // Records</span>
               <div className="flex-1 h-px bg-border/20" />
             </div>
           </ScrollReveal>
 
           <div className="grid lg:grid-cols-3 gap-px bg-border/20 border-x border-border/20">
             {education.map((edu, idx) => (
-              <ScrollReveal key={idx} animation="fade-up" delay={idx * 150} className="bg-background p-12 lg:p-16 hover:bg-secondary/20 transition-all duration-700 group card-hover-elevation border-b border-border/10 lg:border-b-0">
+              <ScrollReveal key={idx} animation="fade-up" delay={idx * 150} className="bg-background p-8 md:p-12 xl:p-16 hover:bg-secondary/20 transition-all duration-700 group card-hover-elevation border-b border-border/10 lg:border-b-0">
                 <div className="flex flex-col h-full">
                   <div className="flex justify-between items-start mb-12">
                     <span className="technical-mono text-accent-enterprise text-sm">
@@ -83,7 +83,7 @@ export function HowIWorkSection() {
                     </h4>
                     <p className="technical-mono text-[11px] uppercase tracking-wider text-muted-foreground leading-relaxed">
                       {edu.degree}
-                      {edu.note && <span className="block mt-2 text-accent-warm/70 italic">[{edu.note}]</span>}
+                      {edu.note && <span className="block mt-2 text-accent-warm italic">[{edu.note}]</span>}
                     </p>
                   </div>
                 </div>

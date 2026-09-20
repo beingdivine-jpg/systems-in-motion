@@ -1,30 +1,24 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/Magnetic";
 import { heroContent } from "@/data/hero";
 
 export function HeroSection() {
-  const scrollToWork = () => {
-    document.getElementById("how-i-work")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section className="relative min-h-screen snap-start flex flex-col justify-center px-4 md:px-6 lg:px-12 overflow-hidden bg-background">
+    <section className="portfolio-hero relative min-h-screen snap-start flex flex-col justify-center px-4 md:px-6 lg:px-12 overflow-hidden bg-background">
       {/* Cinematic Background Elements */}
       <div className="absolute top-1/4 -right-20 w-[60vw] h-[60vw] bg-accent-enterprise/5 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" />
       <div className="absolute -bottom-20 -left-20 w-[40vw] h-[40vw] bg-accent-visual/5 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
 
       {/* Ghost Typographic Element - Subtle Depth */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0">
-        <h2 className="editorial-serif text-[25vw] leading-none tracking-tighter opacity-[0.03] blur-sm">
+        <div aria-hidden="true" className="editorial-serif text-[25vw] leading-none tracking-tighter opacity-[0.03] blur-sm">
           Systems
-        </h2>
+        </div>
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto w-full">
         <div className="stagger-children">
           {/* Offset Header Layout - Refined for Maximum Editorial Impact */}
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-x-16 gap-y-12 items-end mb-24 md:mb-32">
+          <div className="hero-introduction grid lg:grid-cols-[1.4fr_1fr] gap-x-16 gap-y-12 items-end mb-24 md:mb-32">
             <div className="relative group cursor-default">
 
               <h1 className="editorial-serif text-[clamp(5rem,16vw,14rem)] leading-[0.75] tracking-tighter -ml-[0.05em] text-foreground select-none font-light">
@@ -50,19 +44,19 @@ export function HeroSection() {
 
           {/* Call to Actions & Domain Pill-grid */}
           {/* Bottom Interaction Area - Clean Editorial Layout */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-12 mt-12 md:mt-24">
-            <div className="flex flex-wrap gap-6 items-center">
+          <div className="hero-actions flex flex-col md:flex-row justify-between items-center gap-8 lg:gap-12 mt-12 md:mt-24">
+            <div className="shrink-0 flex flex-wrap gap-6 items-center">
               <Magnetic strength={0.4}>
-                <button
-                  onClick={scrollToWork}
+                <a
+                  href="#innovation"
                   className="group relative flex items-center gap-4 px-8 py-4 bg-background/5 border border-white/10 backdrop-blur-sm rounded-full overflow-hidden transition-all duration-500 hover:border-white/20 hover:bg-background/10 hover:pr-10"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                  <span className="technical-mono text-xs tracking-[0.2em] text-foreground/80 group-hover:text-foreground transition-colors">
-                    SYSTEMS // VIEW
+                  <span className="technical-mono text-xs whitespace-nowrap tracking-[0.2em] text-foreground/80 group-hover:text-foreground transition-colors">
+                    EXPLORE // WORK
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shine" />
-                </button>
+                </a>
               </Magnetic>
             </div>
 

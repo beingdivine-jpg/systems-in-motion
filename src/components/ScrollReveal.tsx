@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface ScrollRevealProps {
     children: React.ReactNode;
@@ -21,8 +22,10 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
+    const reducedMotion = useReducedMotion();
 
     useEffect(() => {
+        if (reducedMotion) return;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -48,7 +51,7 @@ export function ScrollReveal({
                 observer.unobserve(currentRef);
             }
         };
-    }, [threshold, once]);
+    }, [threshold, once, reducedMotion]);
 
     const STYLES = {
         "fade-up": isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
@@ -62,7 +65,8 @@ export function ScrollReveal({
     return (
         <div
             ref={ref}
-            className={`${className} transition-all duration-700 ease-premium ${STYLES[animation]}`}
+            data-scroll-reveal
+            className={`${className} transition-all duration-700 ease-premium ${reducedMotion ? "opacity-100" : STYLES[animation]}`}
             style={{
                 transitionDuration: `${duration}ms`,
                 transitionDelay: `${delay}ms`,

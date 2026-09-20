@@ -17,7 +17,7 @@ export function EnterpriseSection() {
         <ScrollReveal animation="fade-up" delay={100}>
           <SectionHeader number="02" title="Enterprise & Operations">
             <h2 className="editorial-serif text-[clamp(2.5rem,6vw,5rem)] leading-[0.9] tracking-tighter">
-              Orchestrating <span className="italic text-muted-foreground/60">complexity</span> in
+              Orchestrating <span className="italic text-muted-foreground/80">complexity</span> in
               global <span className="border-b-2 border-accent-enterprise/20 pb-1">environments.</span>
             </h2>
           </SectionHeader>
@@ -33,10 +33,10 @@ export function EnterpriseSection() {
                 <article className="group grid grid-cols-1 md:grid-cols-[20%_minmax(0,1fr)] gap-8 lg:gap-16 relative">
                   {/* Left: Metadata */}
                   <div className="hidden md:flex flex-col items-end text-right pt-2 relative z-10">
-                    <span className={`technical-mono text-sm mb-2 ${exp.current ? "text-accent-operations" : "opacity-40"}`}>
+                    <span className={`technical-mono text-xs mb-2 ${exp.current ? "text-accent-operations" : "text-muted-foreground"}`}>
                       {exp.period}
                     </span>
-                    <span className="technical-mono text-xs opacity-40">{exp.location}</span>
+                    <span className="technical-mono text-[11px] text-muted-foreground">{exp.location}</span>
 
                     {/* Timeline Node */}
                     <div className={`absolute right-[-33px] lg:right-[-65px] top-3 w-3 h-3 rounded-full border-2 bg-background transition-colors duration-500 ${exp.current ? "border-accent-operations" : "border-border group-hover:border-accent-enterprise"}`} />
@@ -46,11 +46,11 @@ export function EnterpriseSection() {
                   <div className="relative p-8 rounded-3xl border border-border/40 bg-secondary/5 hover:bg-secondary/10 transition-all duration-500 group-hover:border-accent-enterprise/30">
                     {/* Mobile Metadata */}
                     <div className="flex flex-col sm:flex-row md:hidden items-start sm:items-center gap-4 mb-6">
-                      <span className={`technical-mono text-xs ${exp.current ? "text-accent-operations" : "opacity-60"}`}>
+                      <span className={`technical-mono text-xs ${exp.current ? "text-accent-operations" : "text-muted-foreground"}`}>
                         [{exp.period}]
                       </span>
                       <div className="hidden sm:block h-px bg-border/40 flex-1" />
-                      <span className="technical-mono text-xs opacity-60">{exp.location}</span>
+                      <span className="technical-mono text-[11px] text-muted-foreground">{exp.location}</span>
                     </div>
 
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
@@ -58,10 +58,10 @@ export function EnterpriseSection() {
                         <h3 className="editorial-serif text-3xl mb-1 group-hover:text-accent-enterprise transition-colors">
                           {exp.company}
                         </h3>
-                        <p className="technical-mono text-accent-enterprise/60">{exp.role}</p>
+                        <p className="technical-mono text-xs text-accent-enterprise">{exp.role}</p>
                       </div>
                       {exp.current && (
-                        <span className="self-start technical-mono text-[10px] text-accent-operations bg-accent-operations/10 px-3 py-1 rounded-full border border-accent-operations/20">
+                        <span className="self-start shrink-0 technical-mono text-[11px] text-accent-operations bg-accent-operations/10 px-3 py-1 rounded-full border border-accent-operations/20">
                           Active_System
                         </span>
                       )}
@@ -75,7 +75,7 @@ export function EnterpriseSection() {
                       {exp.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="technical-mono px-3 py-1.5 bg-background border border-border/50 text-foreground/60 rounded-full text-[10px] group-hover:border-accent-enterprise/20 transition-colors"
+                          className="technical-mono px-3 py-1.5 bg-background border border-border/50 text-muted-foreground rounded-full text-[11px] group-hover:border-accent-enterprise/20 transition-colors"
                         >
                           {tag}
                         </span>
@@ -93,7 +93,7 @@ export function EnterpriseSection() {
           <ScrollReveal animation="fade-up" delay={100}>
             <div className="flex items-center gap-4 mb-12">
               <div className="w-8 h-px bg-accent-enterprise/50" />
-              <span className="technical-mono text-xs tracking-widest uppercase opacity-60">Strategic Research & Analysis</span>
+              <span className="technical-mono text-xs tracking-widest text-muted-foreground">Strategic Research & Analysis</span>
             </div>
           </ScrollReveal>
 
@@ -104,6 +104,7 @@ export function EnterpriseSection() {
                 loop: true,
               }}
               className="w-full"
+              aria-label="Strategic research"
             >
               <CarouselContent className="-ml-6">
                 {researchProjects.map((project, index) => (
@@ -114,7 +115,7 @@ export function EnterpriseSection() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block h-full group relative bg-secondary/5 hover:bg-secondary/10 border border-border/40 hover:border-accent-enterprise/30 rounded-[2rem] p-8 transition-all duration-500 overflow-hidden cursor-pointer"
+                          className="flex flex-col h-full group relative bg-secondary/5 hover:bg-secondary/10 border border-border/40 hover:border-accent-enterprise/30 rounded-[2rem] p-8 transition-all duration-500 cursor-pointer"
                         >
                           <ProjectContent project={project} />
                         </a>
@@ -148,11 +149,11 @@ function ProjectContent({ project }: { project: ResearchProject }) {
       </div>
 
       <div className="mb-6">
-        <span className="technical-mono text-[10px] text-accent-enterprise/80 mb-2 block">{project.type}</span>
+        <span className="technical-mono text-[11px] text-accent-enterprise mb-2 block">{project.type}</span>
         <h3 className="editorial-serif text-2xl lg:text-3xl leading-tight mb-2 group-hover:text-foreground transition-colors">
           {project.title}
         </h3>
-        <p className="technical-mono text-xs opacity-60">{project.subtitle}</p>
+        <p className="technical-mono text-xs text-muted-foreground">{project.subtitle}</p>
       </div>
 
       <p className="body-sans text-muted-foreground mb-8 text-sm lg:text-base leading-relaxed">
@@ -161,14 +162,14 @@ function ProjectContent({ project }: { project: ResearchProject }) {
 
       <div className="flex flex-wrap gap-3 mt-auto">
         {project.stats.map((stat, i) => (
-          <span key={i} className="inline-flex items-center text-[10px] technical-mono text-muted-foreground/70 bg-background/50 px-3 py-1 rounded-sm border border-border/20">
+          <span key={i} className="inline-flex items-center text-[11px] technical-mono text-muted-foreground bg-background/50 px-3 py-1 rounded-sm border border-border/20">
             {stat}
           </span>
         ))}
       </div>
 
-      <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center gap-2">
-        {project.link && <span className="technical-mono text-[10px] text-accent-enterprise">{project.cta || "View Details"}</span>}
+      <div className="mt-6 flex items-center justify-end gap-2 text-accent-enterprise">
+        {project.link && <span className="technical-mono text-[11px]">{project.cta || "View Details"}</span>}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent-enterprise">
           <path d="M7 17L17 7M17 7H7M17 7V17" />
         </svg>

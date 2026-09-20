@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect, ReactNode } from 'react';
+import { useRef, useState, useEffect, ReactNode } from 'react';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 interface MagneticProps {
     children: ReactNode;
@@ -8,8 +9,10 @@ interface MagneticProps {
 export function Magnetic({ children, strength = 0.5 }: MagneticProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
+    const reducedMotion = useReducedMotion();
 
     useEffect(() => {
+        if (reducedMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
         const handleMouseMove = (e: MouseEvent) => {
             if (!ref.current) return;
 
@@ -40,16 +43,17 @@ export function Magnetic({ children, strength = 0.5 }: MagneticProps) {
             setPosition({ x: 0, y: 0 });
         };
 
+        const element = ref.current;
         window.addEventListener('mousemove', handleMouseMove);
-        ref.current?.addEventListener('mouseleave', handleMouseLeave);
+        element?.addEventListener('mouseleave', handleMouseLeave);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
-            ref.current?.removeEventListener('mouseleave', handleMouseLeave);
+            element?.removeEventListener('mouseleave', handleMouseLeave);
         };
-    }, [strength]);
+    }, [strength, reducedMotion]);
 
-    const { x, y } = position;
+    const { x, y } = reducedMotion ? { x: 0, y: 0 } : position;
 
     return (
         <div

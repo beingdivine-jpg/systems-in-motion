@@ -11,9 +11,9 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ number, title, Icon, accentClass = "text-foreground", alignment = "left", children }: SectionHeaderProps) {
     return (
-        <div className={`flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24 lg:mb-32 ${alignment === "center" ? "items-center text-center" : ""}`}>
+        <div className={`flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-24 lg:mb-32 ${alignment === "center" ? "items-center text-center" : ""}`}>
             <div className="max-w-3xl relative">
-                <span className="technical-mono block mb-6 text-xs tracking-widest uppercase opacity-60 text-accent-visual/80">
+                <span className="technical-mono block mb-6 text-xs tracking-widest text-accent-visual">
                     {number} // {title}
                 </span>
 
@@ -29,7 +29,7 @@ export function SectionHeader({ number, title, Icon, accentClass = "text-foregro
 
             <div className="flex items-center gap-4">
                 <div className="w-12 h-px bg-border" />
-                <span className="technical-mono text-[10px] tracking-widest uppercase opacity-40">System: Active</span>
+                <span className="technical-mono text-[11px] tracking-widest text-muted-foreground">System: Active</span>
             </div>
         </div>
     );
