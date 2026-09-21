@@ -15,7 +15,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-12">
+      <div className="hero-content relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-12">
         <div className="stagger-children">
           <div className="hero-introduction grid sm:grid-cols-[1.25fr_1fr] gap-8 md:gap-12 lg:gap-16 items-center">
             <div className="hero-identity flex flex-col gap-8 md:gap-10 lg:gap-12">
@@ -25,12 +25,15 @@ export function HeroSection() {
                   {heroContent.name.last}
                 </span>
               </h1>
-              <p className="body-sans text-lg md:text-2xl text-muted-foreground leading-relaxed max-w-xl">
-                {heroContent.introduction.map((part, i) => (
-                  <span key={i} className={part.highlight ? "text-foreground font-medium" : ""}>
-                    {part.text}
-                  </span>
-                ))}
+              <p className="hero-statement body-sans text-lg md:text-2xl text-muted-foreground leading-relaxed">
+                <span className="hero-statement-lead">{heroContent.introduction[0].text}</span>
+                <span className="hero-statement-disciplines">
+                  {heroContent.introduction.slice(1).map((part, i) => (
+                    <span key={i} className={part.highlight ? "text-foreground font-medium" : ""}>
+                      {part.text}
+                    </span>
+                  ))}
+                </span>
               </p>
             </div>
             <HeroMotion />

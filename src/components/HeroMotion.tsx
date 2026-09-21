@@ -1,23 +1,52 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { Pause, Play } from "lucide-react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
-const orbit = "M320 320C205 260 176 164 256 135C362 96 487 207 447 279C421 326 372 344 320 320";
-const colours = ["var(--accent-enterprise)", "var(--accent-operations)", "var(--accent-warm)"];
+const desktopQuery = "(min-width: 1024px)";
+const subscribeToDesktop = (onChange: () => void) => {
+  const media = window.matchMedia(desktopQuery);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+};
+const isDesktop = () => window.matchMedia(desktopQuery).matches;
+const serverDesktop = () => false;
 
 export function HeroMotion() {
+  const transparencyId = `portrait-ink-${useId().replace(/:/g, "")}`;
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const reducedMotion = useReducedMotion();
-  const [paused, setPaused] = useState(false);
+  const desktop = useSyncExternalStore(subscribeToDesktop, isDesktop, serverDesktop);
+  // Safari supports native HEVC alpha in QuickTime; Chromium skips this format.
+  // Avoid Safari's accelerated-video path bypassing SVG colour filters.
+  const [nativeAlpha] = useState(() =>
+    document.createElement("video").canPlayType('video/quicktime; codecs="hvc1"') !== "",
+  );
+  const poster = desktop
+    ? "/media/portrait/divin-portrait-alpha-poster.png?v=5"
+    : "/media/portrait/divin-portrait-small-alpha-poster.png?v=5";
+  const opaquePortrait = desktop
+    ? "/media/portrait/divin-portrait.mp4?v=4"
+    : "/media/portrait/divin-portrait-small.mp4?v=3";
+  const alphaPortrait = desktop
+    ? "/media/portrait/divin-portrait-alpha.mov?v=5"
+    : "/media/portrait/divin-portrait-small-alpha.mov?v=5";
+  const portrait = nativeAlpha ? alphaPortrait : opaquePortrait;
   const [visible, setVisible] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
   const [tabVisible, setTabVisible] = useState(!document.hidden);
-  const running = visible && tabVisible && !paused && !reducedMotion;
+  const [videoReady, setVideoReady] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const running = visible && tabVisible && !reducedMotion && !failed;
 
   useEffect(() => {
     const hero = ref.current?.closest("section");
     if (!hero) return;
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting && entry.intersectionRatio >= 0.01),
+      ([entry]) => {
+        const inView = entry.isIntersecting && entry.intersectionRatio >= 0.01;
+        setVisible(inView);
+        if (inView) setHasEntered(true);
+      },
       { threshold: 0.01 },
     );
     observer.observe(hero);
@@ -30,69 +59,52 @@ export function HeroMotion() {
   }, []);
 
   useEffect(() => {
-    const element = ref.current;
-    const hero = element?.closest("section");
-    if (!element || !hero) return;
-    const reset = () => {
-      element.style.setProperty("--motion-x", "0px");
-      element.style.setProperty("--motion-y", "0px");
-      element.style.setProperty("--motion-turn", "0deg");
-    };
-    if (!running || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      reset();
-      return;
-    }
-    let frame = 0;
-    const onMove = (event: PointerEvent) => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const bounds = hero.getBoundingClientRect();
-        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-        element.style.setProperty("--motion-x", `${x * 16}px`);
-        element.style.setProperty("--motion-y", `${y * 12}px`);
-        element.style.setProperty("--motion-turn", `${x * 8}deg`);
+    const video = videoRef.current;
+    if (!video || !hasEntered) return;
+    let cancelled = false;
+    if (running) {
+      void video.play().catch((error: DOMException) => {
+        // Keep the transparent still if autoplay is unavailable.
+        if (!cancelled && error.name !== "AbortError") setFailed(true);
       });
-    };
-    const onLeave = () => {
-      cancelAnimationFrame(frame);
-      reset();
-    };
-    hero.addEventListener("pointermove", onMove, { passive: true });
-    hero.addEventListener("pointerleave", onLeave);
+    } else {
+      video.pause();
+    }
     return () => {
-      cancelAnimationFrame(frame);
-      hero.removeEventListener("pointermove", onMove);
-      hero.removeEventListener("pointerleave", onLeave);
-      reset();
+      cancelled = true;
+      video.pause();
     };
-  }, [running]);
+  }, [running, hasEntered, portrait]);
 
   return (
     <div ref={ref} className="hero-motion" data-running={running}>
-      <div className="hero-motion-parallax" aria-hidden="true">
-        <svg viewBox="80 80 480 480" fill="none" className="hero-motion-art" focusable="false">
-          <g className="hero-motion-sculpture">
-            {colours.map((colour, index) => (
-              <g key={colour} transform={`rotate(${index * 120} 320 320)`}
-                style={{ "--orbit-colour": colour, "--orbit-delay": `${index * -6}s`, "--orbit-rest": index / 3 } as CSSProperties}>
-                <path d={orbit} className="hero-motion-path" />
-                <path d={orbit} pathLength="1" className="hero-motion-trail" />
-                <path d={orbit} pathLength="1" className="hero-motion-point" />
-              </g>
-            ))}
-          </g>
-          <circle cx="320" cy="320" r="10" className="hero-motion-centre-ring" />
-          <circle cx="320" cy="320" r="3" className="hero-motion-centre" />
-        </svg>
+      {!nativeAlpha && <svg width="0" height="0" aria-hidden="true" focusable="false" className="absolute">
+        <defs>
+          <filter id={transparencyId} x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
+            {/* Recover ink coverage from the white-matted recording. Values at
+                or above 250/255 become fully transparent, including codec haze. */}
+            <feColorMatrix type="matrix" values="
+              0 0 0 0 0.055
+              0 0 0 0 0.065
+              0 0 0 0 0.080
+              -0.23167 -0.77938 -0.07868 1.06838 0
+            " />
+          </filter>
+        </defs>
+      </svg>}
+      <div className="hero-portrait-media" role="img" aria-label="Ink-dot portrait of Divin Joseph"
+        data-ready={videoReady && !failed && !reducedMotion}>
+        <img src={poster} alt="" width="1080" height="1200" loading="eager" decoding="async"
+          className="hero-portrait-poster" />
+        {!reducedMotion && !failed && (
+          <video ref={videoRef} src={hasEntered ? portrait : undefined} poster={poster}
+            className="hero-portrait-video" data-ready={videoReady} width="1080" height="1200"
+            style={nativeAlpha ? undefined : { filter: `url(#${transparencyId})` }}
+            loop muted playsInline preload="none" disablePictureInPicture tabIndex={-1} aria-hidden="true"
+            onLoadStart={() => setVideoReady(false)}
+            onPlaying={() => setVideoReady(true)} onError={() => setFailed(true)} />
+        )}
       </div>
-      {!reducedMotion && (
-        <button type="button" onClick={() => setPaused(value => !value)}
-          className="hero-motion-toggle" aria-label={paused ? "Play ambient motion" : "Pause ambient motion"}
-          title={paused ? "Play ambient motion" : "Pause ambient motion"}>
-          {paused ? <Play aria-hidden="true" size={12} /> : <Pause aria-hidden="true" size={12} />}
-        </button>
-      )}
     </div>
   );
 }
