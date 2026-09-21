@@ -67,7 +67,7 @@ export function EnterpriseSection() {
                       )}
                     </div>
 
-                    <p className="body-sans text-lg text-muted-foreground mb-8 max-w-3xl leading-relaxed">
+                    <p className="body-copy text-muted-foreground mb-8 max-w-3xl">
                       {exp.description}
                     </p>
 
@@ -156,7 +156,7 @@ function ProjectContent({ project }: { project: ResearchProject }) {
         <p className="technical-mono text-xs text-muted-foreground">{project.subtitle}</p>
       </div>
 
-      <p className="body-sans text-muted-foreground mb-8 text-sm lg:text-base leading-relaxed">
+      <p className="body-copy text-muted-foreground mb-8">
         {project.description}
       </p>
 

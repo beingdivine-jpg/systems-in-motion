@@ -22,19 +22,19 @@ export function HowIWorkSection() {
           <div className="grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-12 xl:gap-16 items-start">
             <article className="space-y-6">
               <h3 className="technical-mono text-xs tracking-widest text-accent-enterprise">Technology in Practice</h3>
-              <p className="body-sans text-xl leading-relaxed text-muted-foreground">
+              <p className="body-copy text-muted-foreground">
                 I’m drawn to what happens after an organisation adopts new technology: how it is used, managed and kept useful. <span className="text-foreground font-medium">IT asset management</span> connects that interest with my studies and the way I think about AI.
               </p>
             </article>
             <article className="space-y-6">
               <h3 className="technical-mono text-xs tracking-widest text-accent-enterprise">Following Curiosity</h3>
-              <p className="body-sans text-xl leading-relaxed text-muted-foreground">
+              <p className="body-copy text-muted-foreground">
                 I enjoy <span className="italic text-foreground">being a beginner again</span>. Building with AI, exploring unfamiliar subjects and meeting people give me new ways to think. Each project leaves me with something I didn’t know when I started.
               </p>
             </article>
             <article className="space-y-6">
               <h3 className="technical-mono text-xs tracking-widest text-accent-enterprise">Making Room for Luck</h3>
-              <p className="body-sans text-xl leading-relaxed text-muted-foreground">
+              <p className="body-copy text-muted-foreground">
                 After competitive gaming, I saw luck as something to wait for. <a href="https://paulgraham.com/greatwork.html" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Paul Graham’s advice</a> to <span className="text-foreground font-medium">“make yourself a big target for luck”</span> changed that. Now I keep learning, building and meeting people, putting myself in situations where opportunities can find me.
               </p>
             </article>

@@ -34,7 +34,7 @@ export function InnovationSection() {
               Building <span className="italic text-muted-foreground/80">future-state</span> products
               and competing in <span className="border-b-2 border-accent-warm/20 pb-1">global innovation arenas.</span>
             </h2>
-            <p className="body-sans text-lg text-muted-foreground leading-relaxed mt-8">
+            <p className="body-copy text-muted-foreground mt-8">
               <span className="text-foreground font-medium">20+ hackathons across Europe.</span> A selection of the projects and results along the way.
             </p>
           </SectionHeader>
@@ -84,7 +84,7 @@ function BuilderCultureSection() {
             <h3 id="builder-culture-title" className="editorial-serif text-4xl md:text-5xl lg:text-6xl leading-none tracking-tight">
               Builders <span className="italic text-accent-warm">in motion.</span>
             </h3>
-            <p className="body-sans text-lg text-muted-foreground mt-6 max-w-2xl">
+            <p className="body-copy text-muted-foreground mt-6 max-w-2xl">
               Helping people find the tools, confidence and community to turn ideas into something real.
             </p>
           </div>
@@ -104,7 +104,7 @@ function BuilderCultureSection() {
 
               <div className="lg:col-span-8 lg:pl-12 lg:border-l border-border/40 min-w-0">
                 <p className="editorial-serif text-2xl md:text-3xl leading-tight mb-6">{initiative.statement}</p>
-                <div className="body-sans text-lg text-muted-foreground leading-relaxed space-y-5">
+                <div className="body-copy text-muted-foreground space-y-5">
                   <p>{initiative.description}</p>
                   <p>{initiative.details}</p>
                 </div>
@@ -125,7 +125,7 @@ function BuilderCultureSection() {
                     </a>
                   )}
                 </div>
-                {initiative.closing && <p className="body-sans text-sm text-muted-foreground mt-4">{initiative.closing}</p>}
+                {initiative.closing && <p className="body-copy text-muted-foreground mt-4">{initiative.closing}</p>}
               </div>
             </article>
           </ScrollReveal>
@@ -176,7 +176,7 @@ function InnovationProjectList({ items, compact = false }: { items: Venture[], c
               </div>
 
               <div className="lg:col-span-8 lg:pl-12 lg:border-l border-border/40">
-                <p className="body-sans text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
+                <p className="body-copy text-muted-foreground mb-6">
                   {venture.description}
                 </p>
 
@@ -200,7 +200,7 @@ function InnovationProjectList({ items, compact = false }: { items: Venture[], c
                     )}
                   </div>
                 )}
-                {venture.note && <p className="body-sans text-base text-muted-foreground mb-6">{venture.note}</p>}
+                {venture.note && <p className="body-copy text-muted-foreground mb-6">{venture.note}</p>}
 
                 {venture.story && (
                   <Collapsible className="mb-10 group/story">
@@ -210,7 +210,7 @@ function InnovationProjectList({ items, compact = false }: { items: Venture[], c
                     </CollapsibleTrigger>
                     <CollapsibleContent className="space-y-6 animate-collapsible-down overflow-hidden data-[state=closed]:animate-collapsible-up">
                       {venture.story.map((para, pIdx) => (
-                        <p key={pIdx} className="body-sans text-lg text-muted-foreground leading-relaxed">
+                        <p key={pIdx} className="body-copy text-muted-foreground">
                           {para}
                         </p>
                       ))}
@@ -364,7 +364,7 @@ function InnovationCompetitionContent({ comp, idx }: { comp: Competition, idx: n
             {comp.location} — {comp.year}
           </p>
           {comp.description && (
-            <p className="body-sans text-base text-muted-foreground leading-relaxed mt-6">
+            <p className="body-copy text-muted-foreground mt-6">
               {comp.description}
             </p>
           )}

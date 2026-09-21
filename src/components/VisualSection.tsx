@@ -44,7 +44,7 @@ export function VisualSection() {
             </h2>
 
             <div className="pl-6 border-l-2 border-accent-visual/30">
-              <p className="body-sans text-lg lg:text-xl text-muted-foreground leading-relaxed">
+              <p className="body-copy text-muted-foreground">
                 The research and analysis behind these projects were a team effort. The <strong className="text-foreground font-medium">storytelling, visual direction and final presentation design</strong> are my own. Each piece explores how to make a complex subject easier to understand.
               </p>
             </div>
@@ -133,7 +133,7 @@ export function VisualSection() {
 
                 <div className="absolute bottom-8 left-8 right-8">
                   <span className="technical-mono text-xs text-white block mb-2">River's Sanctuary</span>
-                  <p className="body-sans text-lg text-white italic leading-relaxed">
+                  <p className="body-copy text-white italic">
                     "Visual thinking is the bridge between complex systems and human experience."
                   </p>
                 </div>
@@ -187,7 +187,7 @@ function VisualTileContent({ project, index }: { project: Project, index: number
           <h3 className="editorial-serif text-2xl lg:text-3xl mb-3 text-white">
             {project.title}
           </h3>
-          <p className="body-sans text-sm lg:text-base text-white leading-relaxed">
+          <p className="body-copy text-white">
             {project.description}
           </p>
           {project.link && (

@@ -12,14 +12,5 @@ export const heroContent = {
         { text: ", and ", highlight: false },
         { text: "creativity", highlight: true },
         { text: ".", highlight: false }
-    ],
-    cta: {
-        primary: "View Systems",
-        secondary: "Curriculum Vitae"
-    },
-    expertise: [
-        { main: "Enterprise", sub: "Global Systems" },
-        { main: "Innovation", sub: "Product Strategy" },
-        { main: "Creative", sub: "Visual Direction" }
     ]
 };
