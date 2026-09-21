@@ -4,26 +4,24 @@ import type { BuilderInitiative, Competition, Venture } from "@/types";
 export const recentProjects: Venture[] = [
     {
         title: "ClinTrial",
-        role: "Product, Business & Pitch",
         period: "8–9 July 2026 · Paris",
         description: "At the RAISE Summit hackathon, our five-person team built ClinTrial: an AI agent that checks clinical-trial invoices against protocols, contracts, budgets and payment history.",
-        contribution: "I led product definition, market-fit analysis, the business case and the pitch.",
         outcome: "1st place · Vultr Track",
+        prizePool: { value: "€100K+", event: "RAISE Hackathon", href: "https://www.raisesummit.com/post/world-largest-ai-hackathon-startup-competition-raise-summit-2026" },
         highlights: ["RAISE 2026", "AI Invoice Review"],
         links: [{ label: "Watch the demo", href: "https://www.youtube.com/watch?v=ZG7tVEBMd9s" }],
         icon: ShieldCheck,
     },
     {
         title: "Loki Intelligence",
-        role: "Product & Go-to-Market",
         period: "June 2026 · Amsterdam",
         description: "At MEGATHON, our four-person team built an AI security-testing agent that assessed 30 system architectures and produced 100+ verified findings in 48 hours.",
-        contribution: "I led product management and go-to-market planning.",
         outcome: "Two 1st places · One 2nd place",
+        prizePool: { value: "€100K+", event: "MEGATHON", href: "https://hackathon.fndr.studio/" },
         note: "I later stepped away because of other commitments.",
         story: [
             "We placed first in Build with Devin (Cognition), first in Prompt to Paid (Base44), and second in the Startup Track (Mollie, Visa and Peak).",
-            "The team has since continued as Loki Intelligence B.V., with paying clients and a place in the Base44 Accelerator Program. My contribution was to the early product and go-to-market work; I’m no longer part of the team."
+            "The team has since continued as Loki Intelligence B.V., with paying clients and a place in the Base44 Accelerator Program."
         ],
         highlights: ["MEGATHON", "One Build"],
         links: [{ label: "Visit Loki Intelligence", href: "https://loki-intelligence.com" }],

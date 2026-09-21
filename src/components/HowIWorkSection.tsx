@@ -18,40 +18,28 @@ export function HowIWorkSection() {
           </SectionHeader>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start mb-20 md:mb-32 lg:mb-48">
-          <div className="lg:col-span-7">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
-              <ScrollReveal animation="fade-up" delay={200}>
-                <div className="space-y-6">
-                  <span className="technical-mono text-xs tracking-widest text-accent-enterprise block">Technology in Practice</span>
-                  <p className="body-sans text-xl leading-relaxed text-muted-foreground">
-                    I’m drawn to what happens after an organisation adopts new technology: how it is used, managed and kept useful. <span className="text-foreground font-medium">IT asset management</span> connects that interest with my studies and the way I think about AI.
-                  </p>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal animation="fade-up" delay={300}>
-                <div className="space-y-6">
-                  <span className="technical-mono text-xs tracking-widest text-accent-enterprise block">Following Curiosity</span>
-                  <p className="body-sans text-xl leading-relaxed text-muted-foreground">
-                    I enjoy <span className="italic text-foreground">being a beginner again</span>. Building with AI, exploring unfamiliar subjects and meeting people give me new ways to think. Each project leaves me with something I didn’t know when I started.
-                  </p>
-                </div>
-              </ScrollReveal>
-            </div>
+        <ScrollReveal animation="fade-up" delay={200} className="mb-20 md:mb-32 lg:mb-48">
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-12 xl:gap-16 items-start">
+            <article className="space-y-6">
+              <h3 className="technical-mono text-xs tracking-widest text-accent-enterprise">Technology in Practice</h3>
+              <p className="body-sans text-xl leading-relaxed text-muted-foreground">
+                I’m drawn to what happens after an organisation adopts new technology: how it is used, managed and kept useful. <span className="text-foreground font-medium">IT asset management</span> connects that interest with my studies and the way I think about AI.
+              </p>
+            </article>
+            <article className="space-y-6">
+              <h3 className="technical-mono text-xs tracking-widest text-accent-enterprise">Following Curiosity</h3>
+              <p className="body-sans text-xl leading-relaxed text-muted-foreground">
+                I enjoy <span className="italic text-foreground">being a beginner again</span>. Building with AI, exploring unfamiliar subjects and meeting people give me new ways to think. Each project leaves me with something I didn’t know when I started.
+              </p>
+            </article>
+            <article className="space-y-6">
+              <h3 className="technical-mono text-xs tracking-widest text-accent-enterprise">Making Room for Luck</h3>
+              <p className="body-sans text-xl leading-relaxed text-muted-foreground">
+                After competitive gaming, I saw luck as something to wait for. <a href="https://paulgraham.com/greatwork.html" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Paul Graham’s advice</a> to <span className="text-foreground font-medium">“make yourself a big target for luck”</span> changed that. Now I keep learning, building and meeting people, putting myself in situations where opportunities can find me.
+              </p>
+            </article>
           </div>
-
-          {/* Aligned Global Lens Content */}
-          <div className="lg:col-span-5 lg:pt-0">
-            <ScrollReveal animation="fade-up" delay={400}>
-              <div className="space-y-6 pt-2">
-                <span className="technical-mono text-xs tracking-widest text-accent-enterprise block">Making Room for Luck</span>
-                <p className="body-sans text-lg text-muted-foreground leading-relaxed">
-                  After competitive gaming, I saw luck as something I had to wait for. <a href="https://paulgraham.com/greatwork.html" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground transition-colors">Paul Graham’s advice</a> to <span className="text-foreground font-medium">“make yourself a big target for luck”</span> changed that. I began exploring, building and meeting people without knowing where it would lead. I still can’t choose when an opportunity arrives, but I can keep learning and putting myself in situations where one might.
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
+        </ScrollReveal>
 
         {/* Education Refinement */}
         <div className="pt-16 md:pt-24 lg:pt-32 border-t border-border/40">

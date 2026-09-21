@@ -164,15 +164,13 @@ function InnovationProjectList({ items, compact = false }: { items: Venture[], c
                     <Icon aria-hidden="true" className="w-6 h-6 text-accent-warm" />
                   </div>}
                   <h3 className="editorial-serif text-3xl md:text-4xl mb-3 leading-tight">{venture.title}</h3>
-                  <p className="technical-mono text-accent-warm text-xs tracking-wide">
-                    {venture.role}
-                    {venture.period && (
-                      <>
-                        <span className="text-muted-foreground mx-2">//</span>
-                        {venture.period}
-                      </>
-                    )}
-                  </p>
+                  {(venture.role || venture.period) && (
+                    <p className="technical-mono text-accent-warm text-xs tracking-wide">
+                      {venture.role}
+                      {venture.role && venture.period && <span className="text-muted-foreground mx-2">//</span>}
+                      {venture.period}
+                    </p>
+                  )}
                 </div>
                 <InnovationLinks links={venture.links} />
               </div>
@@ -182,16 +180,24 @@ function InnovationProjectList({ items, compact = false }: { items: Venture[], c
                   {venture.description}
                 </p>
 
-                {venture.contribution && (
-                  <div className="mb-6">
-                    <p className="technical-mono text-[11px] text-accent-warm mb-2">My contribution</p>
-                    <p className="body-sans text-lg text-muted-foreground">{venture.contribution}</p>
-                  </div>
-                )}
-                {venture.outcome && (
-                  <div className="border-l-2 border-accent-operations/50 pl-5 mb-6">
-                    <p className="technical-mono text-[11px] text-accent-operations mb-1">Team result</p>
-                    <p className="editorial-serif text-2xl md:text-3xl text-accent-operations">{venture.outcome}</p>
+                {(venture.outcome || venture.prizePool) && (
+                  <div className={`grid gap-6 mb-6 ${venture.prizePool ? "sm:grid-cols-[minmax(0,1fr)_auto]" : ""}`}>
+                    {venture.outcome && (
+                      <div className="border-l-2 border-accent-operations/50 pl-5">
+                        <p className="technical-mono text-[11px] text-accent-operations mb-1">Team result</p>
+                        <p className="editorial-serif text-2xl md:text-3xl text-accent-operations">{venture.outcome}</p>
+                      </div>
+                    )}
+                    {venture.prizePool && (
+                      <div className="border-l border-border pl-5">
+                        <p className="technical-mono text-[11px] text-muted-foreground mb-1">Event prize pool</p>
+                        <a href={venture.prizePool.href} target="_blank" rel="noopener noreferrer" aria-label={`${venture.prizePool.event}: ${venture.prizePool.value} event prize pool — source`} className="inline-flex items-center gap-2 min-h-11 text-accent-warm hover:text-foreground transition-colors">
+                          <span className="editorial-serif text-2xl md:text-3xl">{venture.prizePool.value}</span>
+                          <ExternalLink aria-hidden="true" className="w-3 h-3" />
+                        </a>
+                        <p className="body-sans text-xs text-muted-foreground">{venture.prizePool.event}</p>
+                      </div>
+                    )}
                   </div>
                 )}
                 {venture.note && <p className="body-sans text-base text-muted-foreground mb-6">{venture.note}</p>}

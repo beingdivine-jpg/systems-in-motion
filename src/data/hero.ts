@@ -6,9 +6,9 @@ export const heroContent = {
     },
     introduction: [
         { text: "Engineering impact at the intersection of ", highlight: false },
-        { text: "strategy", highlight: true },
-        { text: ", ", highlight: false },
         { text: "technology", highlight: true },
+        { text: ", ", highlight: false },
+        { text: "operations", highlight: true },
         { text: ", and ", highlight: false },
         { text: "creativity", highlight: true },
         { text: ".", highlight: false }

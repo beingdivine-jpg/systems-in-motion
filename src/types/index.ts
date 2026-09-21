@@ -58,12 +58,12 @@ export interface ProjectLink {
 
 export interface Venture {
     title: string;
-    role: string;
+    role?: string;
     period?: string;
     description: string;
     story?: string[];
-    contribution?: string;
     outcome?: string;
+    prizePool?: { value: string; event: string; href: string };
     note?: string;
     links?: ProjectLink[];
     highlights: string[];
