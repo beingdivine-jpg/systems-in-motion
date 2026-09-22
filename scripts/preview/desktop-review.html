@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio — Desktop review</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #eeece8; color: #26303b; font: 12px/1.5 system-ui, sans-serif; }
+    header { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid #d9d7d3; }
+    strong { font-weight: 600; }
+    .controls { display: flex; gap: 14px; align-items: center; }
+    select { font: inherit; background: transparent; border: 1px solid #c8c7c3; border-radius: 5px; color: inherit; padding: 6px 8px; }
+    a { color: inherit; text-underline-offset: 3px; }
+    main { width: 100%; max-width: 1960px; margin: 0 auto; padding: 20px; }
+    #stage { position: relative; width: 100%; margin: 0 auto; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 24px #1924330c; background: #faf9f7; }
+    iframe { position: absolute; top: 0; left: 0; transform-origin: top left; border: 0; background: #faf9f7; }
+    p { margin: 12px 0; color: #646a70; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Desktop review</strong>
+    <div class="controls">
+      <select aria-label="Desktop viewport">
+        <option value="1440,680" selected>Laptop · 1440 × 680</option>
+        <option value="1440,900">Desktop · 1440 × 900</option>
+        <option value="1920,1080">Wide · 1920 × 1080</option>
+      </select>
+      <a href="/" target="_blank" rel="noopener">Open full website ↗</a>
+    </div>
+  </header>
+  <main>
+    <div id="stage"><iframe src="/" title="Portfolio at desktop dimensions" allow="autoplay"></iframe></div>
+    <p>The website keeps the selected desktop dimensions. This frame scales to fit the review panel; scroll inside it to review the rest of the page.</p>
+  </main>
+  <script>
+    const frame = document.querySelector('iframe');
+    const stage = document.querySelector('#stage');
+    const select = document.querySelector('select');
+    function resize() {
+      const [width, height] = select.value.split(',').map(Number);
+      stage.style.maxWidth = `${width}px`;
+      const scale = Math.min(1, stage.clientWidth / width);
+      frame.style.width = `${width}px`;
+      frame.style.height = `${height}px`;
+      frame.style.transform = `scale(${scale})`;
+      stage.style.height = `${height * scale}px`;
+    }
+    select.addEventListener('change', resize);
+    new ResizeObserver(resize).observe(stage);
+    resize();
+  </script>
+</body>
+</html>

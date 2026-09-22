@@ -128,6 +128,39 @@
   width: 100%;
   max-width: 16rem;
   justify-self: center;
+  isolation: isolate;
+}
+
+/* Transparent studio objects occupy the surrounding space, with a clear face silhouette. */
+.hero-curiosity {
+  position: absolute;
+  z-index: -1;
+  left: -8%;
+  top: -8%;
+  width: 116%;
+  height: 112%;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  -webkit-mask-image:
+    radial-gradient(ellipse 25% 29% at 50% 39%, transparent 65%, black 100%),
+    radial-gradient(ellipse 33% 17% at 50% 78%, transparent 55%, black 100%);
+  mask-image:
+    radial-gradient(ellipse 25% 29% at 50% 39%, transparent 65%, black 100%),
+    radial-gradient(ellipse 33% 17% at 50% 78%, transparent 55%, black 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.hero-curiosity[data-ready="true"] { opacity: 0.92; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-curiosity { display: none; }
+}
+
+@media (max-width: 639px) {
+  .hero-curiosity[data-ready="true"] { opacity: 0.65; }
 }
 
 /* Safari receives native alpha video; other browsers recover alpha with an ink filter. */
@@ -166,20 +199,22 @@
 }
 
 @media (min-width: 1024px) {
-  section.portfolio-hero { padding-top: 7rem; padding-bottom: 4rem; }
+  section.portfolio-hero { padding-top: 6rem; padding-bottom: 2rem; }
+  .portfolio-hero .hero-introduction { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; }
+  .hero-identity { min-width: 0; }
   .hero-introduction .hero-identity { gap: 2.5rem; }
   .hero-identity h1 {
     font-size: min(clamp(10rem, 14vw, 12rem), calc((100svh - 16rem) * 0.5));
   }
   .hero-identity .hero-statement {
-    font-size: clamp(1.375rem, 2.1vw, 2rem);
+    font-size: clamp(1.375rem, 2vw, 1.875rem);
     line-height: 1.6;
   }
   .hero-statement-lead,
   .hero-statement-disciplines { display: block; }
   .hero-motion {
-    width: calc(100% + 3rem);
-    max-width: min(30rem, calc((100svh - 14rem) * 0.9));
+    width: 110%;
+    max-width: min(43rem, calc((100svh - 8rem) * 0.9));
   }
 }
 

@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { HeroCuriosity } from "./HeroCuriosity";
 
 const desktopQuery = "(min-width: 1024px)";
 const subscribeToDesktop = (onChange: () => void) => {
@@ -78,6 +79,7 @@ export function HeroMotion() {
 
   return (
     <div ref={ref} className="hero-motion" data-running={running}>
+      {hasEntered && !reducedMotion && <HeroCuriosity running={running} />}
       {!nativeAlpha && <svg width="0" height="0" aria-hidden="true" focusable="false" className="absolute">
         <defs>
           <filter id={transparencyId} x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">

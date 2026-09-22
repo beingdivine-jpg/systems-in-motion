@@ -83,6 +83,33 @@ All sizes retain the full 9:10 portrait framing; compact-screen dimensions are
 preserved. The entrance animation releases its transform and blur after finishing,
 avoiding a persistent compositing layer around the fine grain.
 
+The desktop introduction uses two equal columns with a shared vertical centre.
+The portrait scales with the available window height, with a 688 CSS pixel ceiling;
+its symmetrical orbit stays in the surrounding artwork space. `HeroCuriosity` lazy-loads
+an independent Three.js canvas containing eight individually modelled objects:
+an AI processor, articulated robot arm, gyroscope, neural cluster, faceted crystal,
+metal knot, layered computing core and optical sensor. Bevelled geometry, studio
+reflections and physically based materials provide depth as they turn. An offscreen
+render pass converts that lighting into fine, irregular monochrome ink grain to
+match the portrait. Empty pixels remain fully transparent; no coloured or white
+matte is introduced. The portrait itself is unchanged.
+A shared orbital speed keeps their spacing stable; a soft CSS mask lets them
+recede behind the portrait without obscuring the face. The canvas clears to alpha
+zero and never changes the portrait's own transparency or approved video assets.
+
+The scene renders at most 30 frames per second with pixel density between 1.5 and 2.
+Its animation loop stops offscreen or in a hidden tab, using the portrait's existing
+visibility state. Small screens show four objects. Reduced-motion mode skips the
+3D import entirely, and unavailable WebGL leaves the original portrait intact.
+The renderer, ink render target, geometry, materials, environment map and resize observer are disposed
+on unmount. The 3D engine is in a separate lazy chunk from the main page.
+
+For local visual review, open `/__desktop-review`. Its iframe preserves the chosen
+desktop dimensions even when the Codex sidebar is narrow. The Vite middleware
+serves this review page only in development; it is not part of the production build.
+Always make the final visual check in a visible, full desktop Safari or Chrome
+window as well, since an inactive browser may suspend its opening animation/video.
+
 Safari receives the QuickTime HEVC version with alpha encoded into the video,
 with no CSS/SVG filter on its video or container. This avoids WebKit's accelerated
 video sometimes bypassing SVG filters. QuickTime HEVC support is checked with
